@@ -1,0 +1,35 @@
+<!-- Unit List -->
+<div class="unit-col">
+    <strong>Eligible Posses</strong>
+    @for ( posse of posseService.PosseListSignal(); track $index ) {
+    <div class="unit-card">
+        <span>{{ posse.name }}</span>
+        <button (click)="addPosse(posse)">+</button>
+    </div>
+    }
+</div>
+
+<!-- Selected List -->
+<div class="main-col">
+    <strong>{{ listService.listSignal().name }}</strong>
+    @for (posse of listService.listSignal().posses; track $index) {
+    <div class="unit-card">
+        <a href="posses" routerLink="posses">{{ posse.name }}</a>
+        <div>0 units</div>
+        <button (click)="removePosse(posse.id)">-</button>
+    </div>
+    }
+</div>
+
+<!-- Options / Rules Panel -->
+<div class="options-col">
+    <strong>Lawmen</strong>
+    <div class="form-item">
+        <label>List Name: </label>
+        <input type="text" value="My List" />
+    </div>
+    <div class="form-item">
+        <label>Points: </label>
+        <input type="number" value="300" />
+    </div>
+</div>

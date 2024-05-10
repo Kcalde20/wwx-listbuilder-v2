@@ -1,0 +1,24 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    padding: .5rem;
+}
+
+.unit-col, .main-col, .options-col {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.unit-col, .main-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.unit-card {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,50 @@
+<!-- Unit List -->
+<div class="unit-col">
+    <strong>Eligible Models</strong>
+    @for ( unit of unitService.UnitListSignal(); track $index ) {
+    <div class="unit-card">
+        <span>{{ unit.name }}</span>
+        <button (click)="addUnit(unit.id)">+</button>
+    </div>
+    }
+</div>
+
+<!-- Selected List -->
+<div class="main-col">
+    <strong>{{ posseService.PosseListSignal()[0].name }} 1</strong>
+    <div class="posse-list">
+        @for ( unit of myList; track $index) {
+        <div class="unit-card">
+            <span>{{ unit.name }}</span>
+            <span>{{ unit.points }}</span>
+            <button (click)="removeUnit($index)">-</button>
+        </div>
+        }
+    </div>
+</div>
+
+<!-- Options / Rules Panel -->
+<div class="options-col">
+    @for ( posse of posseService.PosseListSignal(); track $index ) {
+    <strong>Lawmen</strong>
+    <p>{{ posse.description }}</p>
+    <strong>Composition:</strong>
+    <ul>
+        @for ( compositions of posse.composition; track $index) {
+        <li>{{ compositions }}</li>
+        }
+    </ul>
+    <strong>Limitation:</strong>
+    <ul>
+        @for ( limitations of posse.limitation; track $index) {
+        <li>{{ limitations }}</li>
+        }
+    </ul>
+    <strong>Bonus:</strong>
+    <ul>
+        @for ( bonuses of posse.bonus; track $index) {
+        <li>{{ bonuses }}</li>
+        }
+    </ul>
+    }
+</div>
