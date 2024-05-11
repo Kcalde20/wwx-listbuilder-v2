@@ -15,8 +15,8 @@
     @for (posse of listService.listSignal().posses; track $index) {
     <div class="unit-card">
         <a href="posses" routerLink="posses">{{ posse.name }}</a>
-        <div>0 units</div>
-        <button (click)="removePosse(posse.id)">-</button>
+        <div>{{posse.units.length}}</div>
+        <button (click)="removePosse($index)">-</button>
     </div>
     }
 </div>

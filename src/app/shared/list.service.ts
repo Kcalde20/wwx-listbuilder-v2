@@ -24,8 +24,9 @@ export class ListService {
     unitService = inject(UnitService);
     posseService = inject(PosseService);
 
-    addPosse(posse: iPosse) {
+    addPosse(posse: any) {
         this.$listSignal.update((value) => {
+            posse.units = [];
             return {
                 ...value,
                 posses: [...value.posses, posse],
@@ -33,15 +34,10 @@ export class ListService {
         });
     }
 
-    removePosse(posseId: number) {
+    removePosse(posseIndex: number) {
         this.$listSignal.update((value) => {
-            const updatedPosses = value.posses.filter(
-                (posse) => posse.id !== posseId
-            );
-            return {
-                ...value,
-                posses: updatedPosses,
-            };
+            value.posses.splice(posseIndex, 1);
+            return value;
         });
     }
 

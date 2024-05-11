@@ -19,7 +19,7 @@ export class ListScreenComponent {
         this.listService.addPosse(posse);
     }
 
-    removePosse(posseId: number) {
-        this.listService.removePosse(posseId);
+    removePosse(posseIndex: number) {
+        this.listService.removePosse(posseIndex);
     }
 }
