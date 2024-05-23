@@ -52,6 +52,11 @@ export class ListService {
                     name: 'Lawmen Faction Posse',
                     units: [{ id: 1 }, { id: 2 }, { id: 3 }],
                 },
+                {
+                    id: 2,
+                    name: 'Armoured Justice  Posse',
+                    units: [{ id: 1 }, { id: 2 }],
+                },
             ],
         });
     }
