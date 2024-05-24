@@ -27,44 +27,23 @@ export class PosseScreenComponent {
 
     myList: iUnit[] = [];
     selectedPosseId!: string | null;
-    posseData!: any;
-    posseDataMap = computed(() => {
-        const currentPosse = this.listService.getPosseById(
-            Number(this.selectedPosseId)
-        );
-        currentPosse.units.map((e: any) => {
-            const unitServiceData = this.unitService
-                .UnitListSignal()
-                .find((unit) => unit.id === e.id);
-            (e.name = unitServiceData?.name),
-                (e.points = unitServiceData?.points);
-
-            return e;
-        });
-
-        return currentPosse;
-    });
+    posseData = computed(() =>
+        this.listService.getPosseById(Number(this.selectedPosseId))
+    );
 
     getId(unitId: number) {
-        console.log(this.unitService.getUnitById(unitId));
+        this.unitService.getUnitById(unitId);
     }
 
     addUnit(unitId: number) {
-        let newModel: any = this.unitService.getUnitById(unitId);
-        this.myList.push(newModel);
-        console.log(this.myList);
+        this.listService.addUnit(Number(this.selectedPosseId), unitId);
     }
 
     removeUnit(unitIndex: number) {
-        if (unitIndex > -1) {
-            this.myList.splice(unitIndex, 1);
-        }
+        this.listService.removeUnit(Number(this.selectedPosseId), unitIndex);
     }
 
     ngOnInit() {
         this.selectedPosseId = this.route.snapshot.paramMap.get('id');
-        this.posseData = signal(
-            this.listService.getPosseById(Number(this.selectedPosseId))
-        );
     }
 }

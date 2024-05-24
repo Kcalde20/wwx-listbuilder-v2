@@ -45,6 +45,21 @@ export class ListService {
         return this.$listSignal().posses[id];
     }
 
+    addUnit(posseId: number, unitId: number) {
+        this.$listSignal.update((value) => {
+            value.posses[posseId].units.push({ id: unitId });
+            return value;
+        });
+    }
+
+    // todo
+    removeUnit(posseId: number, unitIndex: number) {
+        this.$listSignal.update((value) => {
+            value.posses[posseId].units.splice(unitIndex, 1);
+            return value;
+        });
+    }
+
     constructor() {
         this.$listSignal.set({
             name: 'My List',
