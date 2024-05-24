@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    signal,
+} from '@angular/core';
 import { iUnit, UnitService } from '../../shared/unit.service';
 import { PosseService } from '../../shared/posse.service';
+import { ActivatedRoute } from '@angular/router';
+import { ListService } from '../../shared/list.service';
 
 @Component({
     selector: 'app-posse-screen',
@@ -14,8 +22,28 @@ import { PosseService } from '../../shared/posse.service';
 export class PosseScreenComponent {
     unitService = inject(UnitService);
     posseService = inject(PosseService);
+    listService = inject(ListService);
+    route = inject(ActivatedRoute);
 
     myList: iUnit[] = [];
+    selectedPosseId!: string | null;
+    posseData!: any;
+    posseDataMap = computed(() => {
+        const currentPosse = this.listService.getPosseById(
+            Number(this.selectedPosseId)
+        );
+        currentPosse.units.map((e: any) => {
+            const unitServiceData = this.unitService
+                .UnitListSignal()
+                .find((unit) => unit.id === e.id);
+            (e.name = unitServiceData?.name),
+                (e.points = unitServiceData?.points);
+
+            return e;
+        });
+
+        return currentPosse;
+    });
 
     getId(unitId: number) {
         console.log(this.unitService.getUnitById(unitId));
@@ -31,5 +59,12 @@ export class PosseScreenComponent {
         if (unitIndex > -1) {
             this.myList.splice(unitIndex, 1);
         }
+    }
+
+    ngOnInit() {
+        this.selectedPosseId = this.route.snapshot.paramMap.get('id');
+        this.posseData = signal(
+            this.listService.getPosseById(Number(this.selectedPosseId))
+        );
     }
 }

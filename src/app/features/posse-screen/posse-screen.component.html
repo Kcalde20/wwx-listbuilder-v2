@@ -11,9 +11,9 @@
 
 <!-- Selected List -->
 <div class="main-col">
-    <strong>{{ posseService.PosseListSignal()[0].name }} 1</strong>
+    <strong>{{ posseData().name }}</strong>
     <div class="posse-list">
-        @for ( unit of myList; track $index) {
+        @for ( unit of posseDataMap().units; track $index) {
         <div class="unit-card">
             <span>{{ unit.name }}</span>
             <span>{{ unit.points }}</span>

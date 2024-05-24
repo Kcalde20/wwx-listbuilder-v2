@@ -3,6 +3,6 @@ import { PosseScreenComponent } from './features/posse-screen/posse-screen.compo
 import { ListScreenComponent } from './features/list-screen/list-screen.component';
 
 export const routes: Routes = [
-    { path: 'posses', component: PosseScreenComponent },
+    { path: 'posses/:id', component: PosseScreenComponent },
     { path: '', component: ListScreenComponent },
 ];

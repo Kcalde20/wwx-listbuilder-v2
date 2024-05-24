@@ -41,6 +41,10 @@ export class ListService {
         });
     }
 
+    getPosseById(id: number) {
+        return this.$listSignal().posses[id];
+    }
+
     constructor() {
         this.$listSignal.set({
             name: 'My List',
@@ -50,7 +54,7 @@ export class ListService {
                 {
                     id: 1,
                     name: 'Lawmen Faction Posse',
-                    units: [{ id: 1 }, { id: 2 }, { id: 3 }],
+                    units: [{ id: 1 }, { id: 2 }, { id: 2 }],
                 },
                 {
                     id: 2,
