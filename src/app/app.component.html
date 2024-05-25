@@ -1,2 +1,10 @@
-<h1>App Component</h1>
+<h1 class="app-title">{{ title }}</h1>
+<div class="list-info">
+    <p>{{ listService.listSignal().name }}</p>
+    <p>
+        {{ listService.listPoints() }} /
+        {{ listService.listSignal().points }}
+    </p>
+</div>
 <router-outlet></router-outlet>
+<p>{{ listService.listSignal() | json }}</p>

@@ -25,3 +25,9 @@
     flex-direction: column;
     gap: .25rem;
 }
+
+.list-name {
+    display: flex;
+    justify-content: space-between;
+    font-weight:bold;
+}
