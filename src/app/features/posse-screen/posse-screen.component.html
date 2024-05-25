@@ -1,5 +1,6 @@
 <!-- Unit List -->
 <div class="unit-col">
+    <a routerLink="">Back</a>
     <strong>Eligible Models</strong>
     @for ( unit of unitService.UnitListSignal(); track $index ) {
     <div class="unit-card">
@@ -25,26 +26,26 @@
 
 <!-- Options / Rules Panel -->
 <div class="options-col">
-    @for ( posse of posseService.PosseListSignal(); track $index ) {
     <strong>Lawmen</strong>
-    <p>{{ posse.description }}</p>
+    <p>
+        {{ this.posseIdData()?.description }}
+    </p>
     <strong>Composition:</strong>
     <ul>
-        @for ( compositions of posse.composition; track $index) {
+        @for ( compositions of this.posseIdData()?.composition; track $index) {
         <li>{{ compositions }}</li>
         }
     </ul>
     <strong>Limitation:</strong>
     <ul>
-        @for ( limitations of posse.limitation; track $index) {
+        @for ( limitations of this.posseIdData()?.limitation; track $index) {
         <li>{{ limitations }}</li>
         }
     </ul>
     <strong>Bonus:</strong>
     <ul>
-        @for ( bonuses of posse.bonus; track $index) {
+        @for ( bonuses of this.posseIdData()?.bonus; track $index) {
         <li>{{ bonuses }}</li>
         }
     </ul>
-    }
 </div>

@@ -16,8 +16,8 @@ export class PosseService {
     private $PosseListSignal = signal<iPosse[]>([]);
     PosseListSignal = computed(() => this.$PosseListSignal());
 
-    getPosseById(unitId: number) {
-        return this.PosseListSignal().find(({ id }) => id === unitId);
+    getPosseById(posseId: number) {
+        return this.PosseListSignal().find(({ id }) => id === posseId);
     }
 
     constructor() {
@@ -38,7 +38,7 @@ export class PosseService {
                 id: 2,
                 name: 'Armoured Justice Posse',
                 description:
-                    'This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
+                    'ARmoured This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
                 composition: [
                     'you MUST include One Boss Unit with the LAWMEN trait.',
                     'you MAY include up to a further four Units with the LAWMEN trait.',

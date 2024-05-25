@@ -26,10 +26,14 @@ export class ListService {
 
     addPosse(posse: any) {
         this.$listSignal.update((value) => {
-            posse.units = [];
+            const newPosse = {
+                id: posse.id,
+                name: posse.name,
+                units: [],
+            };
             return {
                 ...value,
-                posses: [...value.posses, posse],
+                posses: [...value.posses, newPosse],
             };
         });
     }
@@ -75,6 +79,11 @@ export class ListService {
                     id: 2,
                     name: 'Armoured Justice  Posse',
                     units: [{ id: 1 }, { id: 2 }],
+                },
+                {
+                    id: 2,
+                    name: 'Armoured Justice  Posse',
+                    units: [{ id: 1 }],
                 },
             ],
         });

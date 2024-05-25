@@ -14,11 +14,12 @@
     <strong>{{ listService.listSignal().name }}</strong>
     @for (posse of listService.listSignal().posses; track $index) {
     <div class="unit-card">
-        <a href="posses/{{ $index }}" routerLink="posses">{{ posse.name }}</a>
+        <a routerLink="posses/{{ $index }}">{{ posse.name }}</a>
         <div>{{ posse.units.length }}</div>
         <button (click)="removePosse($index)">-</button>
     </div>
     }
+    <p>{{ this.listService.listSignal() | json }}</p>
 </div>
 
 <!-- Options / Rules Panel -->

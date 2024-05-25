@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { iUnit, UnitService } from '../../shared/unit.service';
 import { PosseService } from '../../shared/posse.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ListService } from '../../shared/list.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-posse-screen',
     standalone: true,
-    imports: [],
+    imports: [RouterModule, CommonModule],
     providers: [UnitService, PosseService],
     templateUrl: './posse-screen.component.html',
     styleUrl: './posse-screen.component.scss',
@@ -26,9 +27,12 @@ export class PosseScreenComponent {
     route = inject(ActivatedRoute);
 
     myList: iUnit[] = [];
-    selectedPosseId!: string | null;
+    selectedPosseIndex!: number;
     posseData = computed(() =>
-        this.listService.getPosseById(Number(this.selectedPosseId))
+        this.listService.getPosseById(Number(this.selectedPosseIndex))
+    );
+    posseIdData = computed(() =>
+        this.posseService.getPosseById(this.posseData().id)
     );
 
     getId(unitId: number) {
@@ -36,14 +40,16 @@ export class PosseScreenComponent {
     }
 
     addUnit(unitId: number) {
-        this.listService.addUnit(Number(this.selectedPosseId), unitId);
+        this.listService.addUnit(Number(this.selectedPosseIndex), unitId);
     }
 
     removeUnit(unitIndex: number) {
-        this.listService.removeUnit(Number(this.selectedPosseId), unitIndex);
+        this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex);
     }
 
     ngOnInit() {
-        this.selectedPosseId = this.route.snapshot.paramMap.get('id');
+        this.selectedPosseIndex = Number(
+            this.route.snapshot.paramMap.get('id')
+        );
     }
 }
