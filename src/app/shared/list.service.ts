@@ -24,6 +24,17 @@ export class ListService {
     unitService = inject(UnitService);
     posseService = inject(PosseService);
 
+    listPoints = computed(() => {
+        let points = 0;
+        for (let posse of this.listSignal().posses) {
+            for (let units of posse.units) {
+                let unitData = this.unitService.getUnitById(units.id);
+                points = points + unitData!.points;
+            }
+        }
+        return points;
+    });
+
     addPosse(posse: any) {
         this.$listSignal.update((value) => {
             const newPosse = {
@@ -41,7 +52,7 @@ export class ListService {
     removePosse(posseIndex: number) {
         this.$listSignal.update((value) => {
             value.posses.splice(posseIndex, 1);
-            return value;
+            return { ...value };
         });
     }
 
@@ -52,7 +63,7 @@ export class ListService {
     addUnit(posseId: number, unitId: number) {
         this.$listSignal.update((value) => {
             value.posses[posseId].units.push({ id: unitId });
-            return value;
+            return { ...value };
         });
     }
 
@@ -60,7 +71,7 @@ export class ListService {
     removeUnit(posseId: number, unitIndex: number) {
         this.$listSignal.update((value) => {
             value.posses[posseId].units.splice(unitIndex, 1);
-            return value;
+            return { ...value };
         });
     }
 

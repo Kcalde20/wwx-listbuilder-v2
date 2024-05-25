@@ -19,6 +19,7 @@
         <button (click)="removePosse($index)">-</button>
     </div>
     }
+    <p>{{ this.listService.listPoints() }}</p>
     <p>{{ this.listService.listSignal() | json }}</p>
 </div>
 

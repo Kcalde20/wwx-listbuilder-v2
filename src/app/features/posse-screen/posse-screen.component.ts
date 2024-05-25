@@ -28,11 +28,11 @@ export class PosseScreenComponent {
 
     myList: iUnit[] = [];
     selectedPosseIndex!: number;
-    posseData = computed(() =>
+    posseListData = computed(() =>
         this.listService.getPosseById(Number(this.selectedPosseIndex))
     );
     posseIdData = computed(() =>
-        this.posseService.getPosseById(this.posseData().id)
+        this.posseService.getPosseById(this.posseListData().id)
     );
 
     getId(unitId: number) {
