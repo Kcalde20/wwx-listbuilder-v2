@@ -4,7 +4,7 @@
     <strong>Eligible Models</strong>
     @for ( unit of unitService.UnitListSignal(); track $index ) {
     <div class="unit-card">
-        <span>{{ unit.name }}</span>
+        <span>{{ unit.displayName }}</span>
         <button (click)="addUnit(unit.id)">+</button>
     </div>
     }
@@ -12,11 +12,13 @@
 
 <!-- Selected List -->
 <div class="main-col">
-    <strong>{{ posseListData().name }}</strong>
+    <strong>{{ posseListData().displayName }}</strong>
     <div class="posse-list">
         @for ( unit of posseListData().units; track $index) {
         <div class="unit-card">
-            <span>{{ this.unitService.getUnitById(unit.id)!.name }}</span>
+            <span>{{
+                this.unitService.getUnitById(unit.id)!.displayName
+            }}</span>
             <span>{{ this.unitService.getUnitById(unit.id)!.points }}</span>
             <button (click)="removeUnit($index)">-</button>
         </div>

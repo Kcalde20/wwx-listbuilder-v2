@@ -1,8 +1,8 @@
 import { Injectable, computed, signal } from '@angular/core';
 
 export interface iPosse {
-    id: number;
-    name: string;
+    id: string;
+    displayName: string;
     description: string;
     composition: string[];
     limitation?: string[];
@@ -16,15 +16,15 @@ export class PosseService {
     private $PosseListSignal = signal<iPosse[]>([]);
     PosseListSignal = computed(() => this.$PosseListSignal());
 
-    getPosseById(posseId: number) {
+    getPosseById(posseId: string) {
         return this.PosseListSignal().find(({ id }) => id === posseId);
     }
 
     constructor() {
         this.$PosseListSignal.set([
             {
-                id: 1,
-                name: 'Lawmen Faction Posse',
+                id: 'lawmenFactionPosse',
+                displayName: 'Lawmen Faction Posse',
                 description:
                     'This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
                 composition: [
@@ -35,8 +35,8 @@ export class PosseService {
                 bonus: ['none.'],
             },
             {
-                id: 2,
-                name: 'Armoured Justice Posse',
+                id: 'armouredJusticePosse',
+                displayName: 'Armoured Justice Posse',
                 description:
                     'ARmoured This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
                 composition: [

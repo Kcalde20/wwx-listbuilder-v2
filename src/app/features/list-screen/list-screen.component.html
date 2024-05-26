@@ -3,7 +3,7 @@
     <strong>Add Posses</strong>
     @for ( posse of posseService.PosseListSignal(); track $index ) {
     <div class="unit-card">
-        <span>{{ posse.name }}</span>
+        <span>{{ posse.displayName }}</span>
         <button (click)="addPosse(posse)">+</button>
     </div>
     }
@@ -15,12 +15,12 @@
         {{ listService.listSignal().name
         }}<span
             >{{ this.listService.listPoints() }} /
-            {{ this.listService.listSignal().points }}</span
+            {{ this.listService.listSignal().pointLimit }}</span
         >
     </div>
     @for (posse of listService.listSignal().posses; track $index) {
     <div class="unit-card">
-        <a routerLink="posses/{{ $index }}">{{ posse.name }}</a>
+        <a routerLink="posses/{{ $index }}">{{ posse.displayName }}</a>
         <div>{{ posse.units.length }}</div>
         <button (click)="removePosse($index)">-</button>
     </div>
@@ -32,10 +32,10 @@
     <strong>List Configuration</strong>
     <div class="form-item">
         <label>List Name: </label>
-        <input type="text" value="My List" />
+        <input type="text" value="My List" disabled />
     </div>
     <div class="form-item">
-        <label>Points: </label>
-        <input type="number" value="200" />
+        <label>Point Limit: </label>
+        <input type="number" value="200" disabled />
     </div>
 </div>

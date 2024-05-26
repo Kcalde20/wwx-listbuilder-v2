@@ -35,11 +35,11 @@ export class PosseScreenComponent {
         this.posseService.getPosseById(this.posseListData().id)
     );
 
-    getId(unitId: number) {
+    getId(unitId: string) {
         this.unitService.getUnitById(unitId);
     }
 
-    addUnit(unitId: number) {
+    addUnit(unitId: string) {
         this.listService.addUnit(Number(this.selectedPosseIndex), unitId);
     }
 

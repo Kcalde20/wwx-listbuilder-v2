@@ -5,7 +5,7 @@ import { UnitService, iUnit } from './unit.service';
 export interface iList {
     name: string;
     faction: string;
-    points: number;
+    pointLimit: number;
     posses: any[];
 }
 
@@ -16,7 +16,7 @@ export class ListService {
     private $listSignal = signal<iList>({
         name: '',
         faction: '',
-        points: 0,
+        pointLimit: 0,
         posses: [],
     });
     listSignal = computed(() => this.$listSignal());
@@ -39,7 +39,7 @@ export class ListService {
         this.$listSignal.update((value) => {
             const newPosse = {
                 id: posse.id,
-                name: posse.name,
+                displayName: posse.displayName,
                 units: [],
             };
             return {
@@ -60,7 +60,7 @@ export class ListService {
         return this.$listSignal().posses[id];
     }
 
-    addUnit(posseId: number, unitId: number) {
+    addUnit(posseId: number, unitId: string) {
         this.$listSignal.update((value) => {
             value.posses[posseId].units.push({ id: unitId });
             return { ...value };
@@ -79,22 +79,21 @@ export class ListService {
         this.$listSignal.set({
             name: 'My List',
             faction: 'Lawmen',
-            points: 200,
+            pointLimit: 200,
             posses: [
                 {
-                    id: 1,
-                    name: 'Lawmen Faction Posse',
-                    units: [{ id: 1 }, { id: 2 }, { id: 2 }],
+                    id: 'lawmenFactionPosse',
+                    displayName: 'Lawmen Faction Posse',
+                    units: [
+                        { id: 'bassReeves' },
+                        { id: 'frankSinatra' },
+                        { id: 'bassReeves' },
+                    ],
                 },
                 {
-                    id: 2,
-                    name: 'Armoured Justice  Posse',
-                    units: [{ id: 1 }, { id: 2 }],
-                },
-                {
-                    id: 2,
-                    name: 'Armoured Justice  Posse',
-                    units: [{ id: 1 }],
+                    id: 'armouredJusticePosse',
+                    displayName: 'Armoured Justice  Posse',
+                    units: [{ id: 'bassReeves' }, { id: 'frankSinatra' }],
                 },
             ],
         });
