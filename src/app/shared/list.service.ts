@@ -35,6 +35,15 @@ export class ListService {
         return points;
     });
 
+    getPossePoints(posseIndex: number) {
+        let points = 0;
+        for (let units of this.listSignal().posses[posseIndex].units) {
+            let unitData = this.unitService.getUnitById(units.id);
+            points = points + unitData!.points;
+        }
+        return points;
+    }
+
     addPosse(posse: any) {
         this.$listSignal.update((value) => {
             const newPosse = {

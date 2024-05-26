@@ -19,7 +19,9 @@
         <div>
             <a routerLink="posses/{{ $index }}">{{ posse.displayName }}</a>
             <div class="posse__info">
-                <span>15 points</span>
+                <span
+                    >{{ this.listService.getPossePoints($index) }} points</span
+                >
                 <span>{{ posse.units.length }} units</span>
             </div>
         </div>

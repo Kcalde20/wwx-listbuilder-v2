@@ -14,7 +14,9 @@
     <div class="posse-card-name">
         <a routerLink="" class="back-button">Back</a>
         <div>{{ posseListData().displayName }}</div>
-        <div class="posse-points">25 pts</div>
+        <div class="posse-points">
+            {{ listService.getPossePoints(selectedPosseIndex) }}
+        </div>
     </div>
     @for ( unit of posseListData().units; track $index) {
     <div class="unit-card">
@@ -39,7 +41,7 @@
 <!-- Options / Rules Panel -->
 <div class="options-col">
     <div class="card-name">Posse Rules</div>
-    <p>
+    <p class="posse__description">
         {{ this.posseIdData()?.description }}
     </p>
     <strong class="section__title">COMPOSITION:</strong>
