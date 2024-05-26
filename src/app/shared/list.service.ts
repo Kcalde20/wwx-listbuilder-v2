@@ -89,22 +89,7 @@ export class ListService {
             name: 'My List',
             faction: 'Lawmen',
             pointLimit: 200,
-            posses: [
-                {
-                    id: 'lawmenFactionPosse',
-                    displayName: 'Lawmen Faction Posse',
-                    units: [
-                        { id: 'bassReeves' },
-                        { id: 'frankSinatra' },
-                        { id: 'bassReeves' },
-                    ],
-                },
-                {
-                    id: 'armouredJusticePosse',
-                    displayName: 'Armoured Justice  Posse',
-                    units: [{ id: 'bassReeves' }, { id: 'frankSinatra' }],
-                },
-            ],
+            posses: [],
         });
     }
 }
