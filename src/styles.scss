@@ -6,6 +6,8 @@ body {
     --color-text-2: #888;   
     --color-border-1: #E9E9E9;
     --color-border-2: #CBCBCB;
+    --color-negative: rgb(167, 0, 0);
+    --color-positive: green;
 
     --font-size: 1rem;
     --font-size-sm: .85rem;
@@ -18,4 +20,24 @@ body {
     color: var(--color-text-1);
 
     font-family: sans-serif;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: none;
+    background-color: transparent;
+
+    &.--negative {
+        color: var(--color-negative);
+    }
+    &.--positive {
+        color: var(--color-positive);
+    }
+
+    &:hover {
+        background-color: rgb(245, 245, 245) !important;
+    }
 }

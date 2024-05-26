@@ -77,9 +77,16 @@
 
 .card-list {
     display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .25rem;
 }
 
 .composition__ul,
