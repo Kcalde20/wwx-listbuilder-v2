@@ -1,10 +1,10 @@
-<h1 class="app-title">{{ title }}</h1>
-<div class="list-info">
-    <p>{{ listService.listSignal().name }}</p>
-    <p>
+<div class="header">
+    <h1 class="header__app-title">{{ title }}</h1>
+    <span class="header__list-points">
         {{ listService.listPoints() }} /
         {{ listService.listSignal().pointLimit }}
-    </p>
+    </span>
+    <span class="header__list-name">{{ listService.listSignal().name }}</span>
 </div>
 <router-outlet></router-outlet>
 <p>{{ listService.listSignal() | json }}</p>

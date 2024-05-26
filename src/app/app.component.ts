@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    title = 'WWX-Listbuilder';
+    title = "Kevin's WWX-Listbuilder";
 
     listService = inject(ListService);
     posseService = inject(PosseService);

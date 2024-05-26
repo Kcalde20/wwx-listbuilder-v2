@@ -1,8 +1,8 @@
 <!-- Unit List -->
 <div class="unit-col">
-    <strong>Add Posses</strong>
+    <div class="card-name">Add Posses</div>
     @for ( posse of posseService.PosseListSignal(); track $index ) {
-    <div class="unit-card">
+    <div class="posse-list">
         <span>{{ posse.displayName }}</span>
         <button (click)="addPosse(posse)">+</button>
     </div>
@@ -11,25 +11,26 @@
 
 <!-- Selected List -->
 <div class="main-col">
-    <div class="list-name">
-        {{ listService.listSignal().name
-        }}<span
-            >{{ this.listService.listPoints() }} /
-            {{ this.listService.listSignal().pointLimit }}</span
-        >
+    <div class="card-name">
+        {{ listService.listSignal().name }}
     </div>
     @for (posse of listService.listSignal().posses; track $index) {
     <div class="unit-card">
-        <a routerLink="posses/{{ $index }}">{{ posse.displayName }}</a>
-        <div>{{ posse.units.length }}</div>
-        <button (click)="removePosse($index)">-</button>
+        <div>
+            <a routerLink="posses/{{ $index }}">{{ posse.displayName }}</a>
+            <div class="posse__info">
+                <span>15 points</span>
+                <span>{{ posse.units.length }} units</span>
+            </div>
+        </div>
+        <button (click)="removePosse($index)">Delete</button>
     </div>
     }
 </div>
 
 <!-- Options / Rules Panel -->
 <div class="options-col">
-    <strong>List Configuration</strong>
+    <div class="card-name">List Configuration</div>
     <div class="form-item">
         <label>List Name: </label>
         <input type="text" value="My List" disabled />

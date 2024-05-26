@@ -1,9 +1,8 @@
 <!-- Unit List -->
 <div class="unit-col">
-    <a routerLink="">Back</a>
-    <strong>Eligible Models</strong>
+    <div class="card-name">Add Models</div>
     @for ( unit of unitService.UnitListSignal(); track $index ) {
-    <div class="unit-card">
+    <div class="posse-list">
         <span>{{ unit.displayName }}</span>
         <button (click)="addUnit(unit.id)">+</button>
     </div>
@@ -12,42 +11,53 @@
 
 <!-- Selected List -->
 <div class="main-col">
-    <strong>{{ posseListData().displayName }}</strong>
-    <div class="posse-list">
-        @for ( unit of posseListData().units; track $index) {
-        <div class="unit-card">
+    <div class="posse-card-name">
+        <a routerLink="" class="back-button">Back</a>
+        <div>{{ posseListData().displayName }}</div>
+        <div class="posse-points">25 pts</div>
+    </div>
+    @for ( unit of posseListData().units; track $index) {
+    <div class="unit-card">
+        <div>
             <span>{{
                 this.unitService.getUnitById(unit.id)!.displayName
             }}</span>
-            <span>{{ this.unitService.getUnitById(unit.id)!.points }}</span>
-            <button (click)="removeUnit($index)">-</button>
+            <div class="unit__info">
+                <span
+                    >{{
+                        this.unitService.getUnitById(unit.id)!.points
+                    }}
+                    points</span
+                >
+            </div>
         </div>
-        }
+        <button (click)="removeUnit($index)">Delete</button>
     </div>
+    }
 </div>
 
 <!-- Options / Rules Panel -->
 <div class="options-col">
-    <strong>Lawmen</strong>
+    <div class="card-name">Posse Rules</div>
     <p>
         {{ this.posseIdData()?.description }}
     </p>
-    <strong>Composition:</strong>
-    <ul>
+    <strong class="section__title">COMPOSITION:</strong>
+    <ul class="composition__ul">
         @for ( compositions of this.posseIdData()?.composition; track $index) {
-        <li>{{ compositions }}</li>
+        <li class="composition__li">{{ compositions }}</li>
         }
     </ul>
-    <strong>Limitation:</strong>
-    <ul>
+    <strong class="section__title">LIMITATION:</strong>
+    <ul class="limitation__ul">
         @for ( limitations of this.posseIdData()?.limitation; track $index) {
-        <li>{{ limitations }}</li>
+        <li class="limitation__li">{{ limitations }}</li>
         }
     </ul>
-    <strong>Bonus:</strong>
-    <ul>
+    <strong class="section__title">BONUS:</strong>
+    <ul class="bonus__ul">
         @for ( bonuses of this.posseIdData()?.bonus; track $index) {
-        <li>{{ bonuses }}</li>
+        <li class="bonus__li">{{ bonuses }}</li>
         }
     </ul>
 </div>

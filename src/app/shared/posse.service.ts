@@ -28,11 +28,11 @@ export class PosseService {
                 description:
                     'This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
                 composition: [
-                    'you MUST include One Boss Unit with the LAWMEN trait.',
-                    'you MAY include up to a further four Units with the LAWMEN trait.',
+                    'you must include One Boss Unit with the LAWMEN trait.',
+                    'you may include up to a further four Units with the LAWMEN trait.',
                 ],
-                limitation: ['you May NOT include more than one of any Unit.'],
-                bonus: ['none.'],
+                limitation: ['You may not include more than one of any Unit.'],
+                bonus: ['none'],
             },
             {
                 id: 'armouredJusticePosse',
@@ -40,11 +40,11 @@ export class PosseService {
                 description:
                     'ARmoured This is the most flexible and commonly deployed Posse found in the Lawmen. The broad range of Units available makes this an essential component of any force.',
                 composition: [
-                    'you MUST include One Boss Unit with the LAWMEN trait.',
-                    'you MAY include up to a further four Units with the LAWMEN trait.',
+                    'you must include One Boss Unit with the LAWMEN trait.',
+                    'you may include up to a further four Units with the LAWMEN trait.',
                 ],
-                limitation: ['you May NOT include more than one of any Unit.'],
-                bonus: ['none.'],
+                limitation: ['You may not include more than one of any Unit.'],
+                bonus: ['none'],
             },
         ]);
     }

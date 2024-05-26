@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    --color-bg: #FCFCFC;
+    --color-text-1: #444;
+    --color-text-2: #888;   
+    --color-border-1: #E9E9E9;
+    --color-border-2: #CBCBCB;
+
+    --font-size: 1rem;
+    --font-size-sm: .85rem;
+    --font-size-lg: 1.25rem;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text-1);
+
+    font-family: sans-serif;
+}
