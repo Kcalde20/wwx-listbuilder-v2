@@ -57,17 +57,11 @@
 }
 
 .unit__info {
+    gap: .5rem;
     display: flex;
-    align-items: center;
-    gap: 1rem;
     color: var(--color-text-2);
     font-size: var(--font-size-sm);
     padding-block-start: .5rem;
-
-    & * + *::before {
-        content: '-';
-        padding-inline-end: 1rem;
-    }
 }
 
 .card-list {

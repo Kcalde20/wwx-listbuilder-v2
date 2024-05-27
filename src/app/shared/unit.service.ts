@@ -4,6 +4,9 @@ export interface iUnit {
     id: string;
     displayName: string;
     points: number;
+    traits?: string[];
+    countMin?: number;
+    countMax?: number;
 }
 
 @Injectable({
@@ -18,43 +21,94 @@ export class UnitService {
         return this.UnitListSignal().find(({ id }) => id === unitId);
     }
 
+    getUnitsByTrait(unitTrait: string) {
+        return this.$UnitListSignal().filter((unit) => unit.traits?.includes(unitTrait));
+    }
+
     constructor() {
         this.$UnitListSignal.set([
-            { id: 'annieMozee', displayName: 'Annie Mozee', points: 16 },
-            { id: 'bosseReeves', displayName: 'Bass Reeves', points: 19 },
-            { id: 'blackhoof2020', displayName: 'Blackhoof 20-20', points: 15 },
-            { id: 'calamityJane', displayName: 'Calamity Jane', points: 12 },
+            {
+                id: 'annieMozee',
+                displayName: 'Annie Mozee',
+                points: 16,
+                traits: ['Face', 'Legendary', 'Outlaws', 'Lawmen', 'Hex', 'Human', 'Mercenary', 'Ranger', 'Cowboys', 'Tainted'],
+            },
+            {
+                id: 'bosseReeves',
+                displayName: 'Bass Reeves',
+                points: 19,
+                traits: ['Boss', 'Lawmen', 'Human', 'Marshal'],
+            },
+            {
+                id: 'blackhoof2020',
+                displayName: 'Blackhoof 20-20',
+                points: 15,
+                traits: ['Face', 'Lawmen', 'Automata', 'Machine', 'Agent', 'Equus Simulacra'],
+            },
+            {
+                id: 'calamityJane',
+                displayName: 'Calamity Jane',
+                points: 12,
+                traits: ['Face', 'Legendary', 'Outlaws', 'Human', 'Mercenary', 'Ranger'],
+            },
             {
                 id: 'deputizedGunslingers',
                 displayName: 'Deputized Gunslingers',
                 points: 2,
+                traits: ['Hands', 'Lawmen', 'Human', 'Deputy'],
             },
             {
                 id: 'deputizedSharpshooters',
                 displayName: 'Deputized Sharpshooters',
                 points: 2,
+                traits: ['Hands', 'Lawmen', 'Human', 'Deputy'],
             },
             {
                 id: 'deputizedSupportTeam',
                 displayName: 'Deputized Support Team',
                 points: 4,
+                traits: ['Support', 'Lawmen', 'Human', 'Deputy', 'Fire Team'],
             },
-            { id: 'docHolliday', displayName: 'Doc Holliday', points: 16 },
-            { id: 'furioMontoya', displayName: 'Furio Montoya', points: 13 },
-            { id: 'graceMyrtle', displayName: 'Grace Myrtle', points: 12 },
-            { id: 'helenaMiller', displayName: 'Helena Miller', points: 19 },
+            {
+                id: 'docHolliday',
+                displayName: 'Doc Holliday',
+                points: 16,
+            },
+            {
+                id: 'furioMontoya',
+                displayName: 'Furio Montoya',
+                points: 13,
+            },
+            {
+                id: 'graceMyrtle',
+                displayName: 'Grace Myrtle',
+                points: 12,
+            },
+            {
+                id: 'helenaMiller',
+                displayName: 'Helena Miller',
+                points: 19,
+            },
             {
                 id: 'hwkScoutAutomata',
                 displayName: 'HWK Scout Automata',
                 points: 4,
             },
-            { id: 'idaSaxon', displayName: 'Ida Saxon', points: 14 },
+            {
+                id: 'idaSaxon',
+                displayName: 'Ida Saxon',
+                points: 14,
+            },
             {
                 id: 'ironHorseDeputies',
                 displayName: 'Iron Horse Deputies',
                 points: 8,
             },
-            { id: 'jedrickPowell', displayName: 'Jedrick Powell', points: 15 },
+            {
+                id: 'jedrickPowell',
+                displayName: 'Jedrick Powell',
+                points: 15,
+            },
             {
                 id: 'jedrickPowell&2020',
                 displayName: 'Jedrick Powell & 20-20',
@@ -65,20 +119,56 @@ export class UnitService {
                 displayName: 'K9 Attack Dog Pack',
                 points: 2,
             },
-            { id: 'k9GuardDog', displayName: 'K9 Guard Dog', points: 3 },
-            { id: 'k9GunDogPack', displayName: 'K9 Gun Dog Pack', points: 5 },
-            { id: 'kingsleyStern', displayName: 'Kingsley Stern', points: 17 },
-            { id: 'MercuryJones', displayName: 'Mercury Jones', points: 13 },
-            { id: 'mickIronclad', displayName: 'Mick Ironclad', points: 10 },
-            { id: 'missyCopelie', displayName: 'Missy Copelie', points: 11 },
-            { id: 'morganEarp', displayName: 'Morgan Earp', points: 18 },
+            {
+                id: 'k9GuardDog',
+                displayName: 'K9 Guard Dog',
+                points: 3,
+            },
+            {
+                id: 'k9GunDogPack',
+                displayName: 'K9 Gun Dog Pack',
+                points: 5,
+            },
+            {
+                id: 'kingsleyStern',
+                displayName: 'Kingsley Stern',
+                points: 17,
+            },
+            {
+                id: 'MercuryJones',
+                displayName: 'Mercury Jones',
+                points: 13,
+            },
+            {
+                id: 'mickIronclad',
+                displayName: 'Mick Ironclad',
+                points: 10,
+            },
+            {
+                id: 'missyCopelie',
+                displayName: 'Missy Copelie',
+                points: 11,
+            },
+            {
+                id: 'morganEarp',
+                displayName: 'Morgan Earp',
+                points: 18,
+            },
             {
                 id: 'morganEarpLegend',
                 displayName: 'Morgan Earp (Legendary)',
                 points: 21,
             },
-            { id: 'nateBerenger', displayName: 'Nate Berenger', points: 14 },
-            { id: 'patGarrett', displayName: 'Pat Garrett', points: 12 },
+            {
+                id: 'nateBerenger',
+                displayName: 'Nate Berenger',
+                points: 14,
+            },
+            {
+                id: 'patGarrett',
+                displayName: 'Pat Garrett',
+                points: 12,
+            },
             {
                 id: 'rabeccaCopelie',
                 displayName: 'Rabecca Copelie',
