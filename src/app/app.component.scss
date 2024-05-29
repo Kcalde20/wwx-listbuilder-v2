@@ -1,9 +1,20 @@
 .header {
     background-color: white;
-    border: 1px solid var(--color-border-1);
+    border-block-end: 1px solid var(--color-border-1);
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
     padding-inline: 1rem;
+}
+
+@media screen and (max-width: 800px){
+    .header {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding-block-end: 1rem;
+    }
+    .header__app-title, .header__list-name, .header__list-points {
+        text-align: center !important;
+    }
 }
 
 .list-info {
