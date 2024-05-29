@@ -120,6 +120,11 @@
     font-size: var(--font-size-sm);
 }
 
+.unit__separator{
+    font-size: var(--font-size-sm);
+    color: var(--color-text-2);
+}
+
 .posse__description {
     text-align: center;
     font-style: italic;
