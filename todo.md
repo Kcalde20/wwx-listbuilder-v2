@@ -1,7 +1,6 @@
 
 Version 0.2
 - multi model configuration
-- List screen: list out units in posse cards
 
 Version 0.3
 - store decisions made in local browser
