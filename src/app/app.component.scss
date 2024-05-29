@@ -6,6 +6,17 @@
     padding-inline: 1rem;
 }
 
+@media screen and (max-width: 800px){
+    .header {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding-block-end: 1rem;
+    }
+    .header__app-title, .header__list-name, .header__list-points {
+        text-align: center !important;
+    }
+}
+
 .list-info {
     display: flex;
     justify-content: space-between;
