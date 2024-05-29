@@ -101,3 +101,18 @@
     padding-block-end: 1rem;
     font-size: var(--font-size-sm);
 }
+
+.empty-image {
+    height: auto;
+    width: 10rem;
+    margin-inline: auto;
+    padding-block-start: 1rem;
+    opacity: .8;
+    
+}
+
+.empty-text {
+    text-align: center;
+    color: var(--color-text-2);
+    font-size: var(--font-size-sm);
+}
