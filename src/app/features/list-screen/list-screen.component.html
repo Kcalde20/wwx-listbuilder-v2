@@ -34,7 +34,9 @@
         @if(posse.units.length > 0) {
         <div class="posse__unit-list">
             @for (unit of posse.units; track $index) {
-            <span>{{ this.unitService.getUnitById(unit.id)?.displayName }}</span>
+            <span
+                ><ng-container *ngIf="unit.count">{{ unit.count }}x </ng-container>{{ this.unitService.getUnitById(unit.id)?.displayName }}</span
+            >
             }
         </div>
         }

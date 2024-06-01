@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    inject,
-    signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { iUnit, UnitService } from '../../shared/unit.service';
 import { PosseService } from '../../shared/posse.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -28,12 +22,8 @@ export class PosseScreenComponent {
 
     myList: iUnit[] = [];
     selectedPosseIndex!: number;
-    posseListData = computed(() =>
-        this.listService.getPosseById(Number(this.selectedPosseIndex))
-    );
-    posseIdData = computed(() =>
-        this.posseService.getPosseById(this.posseListData().id)
-    );
+    posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex)));
+    posseIdData = computed(() => this.posseService.getPosseById(this.posseListData().id));
 
     getId(unitId: string) {
         this.unitService.getUnitById(unitId);
@@ -47,9 +37,15 @@ export class PosseScreenComponent {
         this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex);
     }
 
+    increaseUnitCount(unitIndex: number) {
+        this.listService.increaseUnitCount(this.selectedPosseIndex, unitIndex);
+    }
+
+    decreaseUnitCount(unitIndex: number) {
+        this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex);
+    }
+
     ngOnInit() {
-        this.selectedPosseIndex = Number(
-            this.route.snapshot.paramMap.get('id')
-        );
+        this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('id'));
     }
 }

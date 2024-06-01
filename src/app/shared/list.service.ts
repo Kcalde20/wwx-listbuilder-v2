@@ -26,20 +26,22 @@ export class ListService {
 
     listPoints = computed(() => {
         let points = 0;
-        for (let posse of this.listSignal().posses) {
-            for (let units of posse.units) {
-                let unitData = this.unitService.getUnitById(units.id);
-                points = points + unitData!.points;
-            }
+        const posses = this.listSignal().posses;
+        for (let i = 0; i < posses.length; i++) {
+            points += this.getPossePoints(i);
         }
         return points;
     });
 
     getPossePoints(posseIndex: number) {
         let points = 0;
-        for (let units of this.listSignal().posses[posseIndex].units) {
-            let unitData = this.unitService.getUnitById(units.id);
-            points = points + unitData!.points;
+        for (let unit of this.listSignal().posses[posseIndex].units) {
+            let unitData = this.unitService.getUnitById(unit.id);
+            if (unit.count) {
+                points = points + unitData!.points * unit.count;
+            } else {
+                points = points + unitData!.points;
+            }
         }
         return points;
     }
@@ -71,7 +73,29 @@ export class ListService {
 
     addUnit(posseId: number, unitId: string) {
         this.$listSignal.update((value) => {
-            value.posses[posseId].units.push({ id: unitId });
+            if (this.unitService.getUnitById(unitId)?.countMin) {
+                value.posses[posseId].units.push({ id: unitId, count: this.unitService.getUnitById(unitId)?.countMin });
+            } else {
+                value.posses[posseId].units.push({ id: unitId });
+            }
+            return { ...value };
+        });
+    }
+
+    increaseUnitCount(posseIndex: number, unitIndex: number) {
+        this.$listSignal.update((value) => {
+            if (value.posses[posseIndex].units[unitIndex].count && value.posses[posseIndex].units[unitIndex].count < this.unitService.getUnitById(value.posses[posseIndex].units[unitIndex].id)?.countMax!) {
+                value.posses[posseIndex].units[unitIndex].count++;
+            }
+            return { ...value };
+        });
+    }
+
+    decreaseUnitCount(posseIndex: number, unitIndex: number) {
+        this.$listSignal.update((value) => {
+            if (value.posses[posseIndex].units[unitIndex].count && value.posses[posseIndex].units[unitIndex].count > this.unitService.getUnitById(value.posses[posseIndex].units[unitIndex].id)?.countMin!) {
+                value.posses[posseIndex].units[unitIndex].count--;
+            }
             return { ...value };
         });
     }
