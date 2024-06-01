@@ -4,7 +4,7 @@ export interface iUnit {
     id: string;
     displayName: string;
     points: number;
-    traits?: string[];
+    traits: string[];
     countMin?: number;
     countMax?: number;
 }
@@ -56,18 +56,24 @@ export class UnitService {
                 displayName: 'Deputized Gunslingers',
                 points: 2,
                 traits: ['Hands', 'Lawmen', 'Deputy'],
+                countMin: 3,
+                countMax: 6,
             },
             {
                 id: 'deputizedSharpshooters',
                 displayName: 'Deputized Sharpshooters',
                 points: 2,
                 traits: ['Hands', 'Lawmen', 'Deputy'],
+                countMin: 3,
+                countMax: 6,
             },
             {
                 id: 'deputizedSupportTeam',
                 displayName: 'Deputized Support Team',
                 points: 4,
                 traits: ['Support', 'Lawmen', 'Deputy', 'Fire Team'],
+                countMin: 1,
+                countMax: 3,
             },
             {
                 id: 'docHolliday',
@@ -110,6 +116,8 @@ export class UnitService {
                 displayName: 'Iron Horse Deputies',
                 points: 8,
                 traits: ['Support', 'Lawmen', 'Machine', 'Mounted', 'Iron Horse'],
+                countMin: 2,
+                countMax: 4,
             },
             {
                 id: 'jedrickPowell',
@@ -128,6 +136,8 @@ export class UnitService {
                 displayName: 'K9 Attack Dog Pack',
                 points: 2,
                 traits: ['Support', 'Lawmen', 'Automata', 'K9 Simulacra'],
+                countMin: 2,
+                countMax: 6,
             },
             {
                 id: 'k9GuardDog',
@@ -140,6 +150,8 @@ export class UnitService {
                 displayName: 'K9 Gun Dog Pack',
                 points: 5,
                 traits: ['Support', 'Lawmen', 'Automata', 'K9 Simulacra'],
+                countMin: 2,
+                countMax: 4,
             },
             {
                 id: 'kingsleyStern',
@@ -200,12 +212,16 @@ export class UnitService {
                 displayName: 'Ranger Blackjack',
                 points: 10,
                 traits: ['Support', 'Lawmen', 'Ranger', 'Mounted', 'Blackjack', 'Ram'],
+                countMin: 2,
+                countMax: 4,
             },
             {
                 id: 'rangerHeavyInterceptor',
                 displayName: 'Ranger Heavy Interceptor',
                 points: 7,
                 traits: ['Support', 'Lawmen', 'Ranger', 'Mounted', 'Interceptor'],
+                countMin: 1,
+                countMax: 3,
             },
         ]);
     }

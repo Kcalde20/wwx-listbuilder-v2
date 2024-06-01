@@ -34,7 +34,7 @@ export class PosseService {
                 id: 'armouredJusticePosse',
                 displayName: 'Armoured Justice Posse',
                 description: 'This posse may be included in a Lawmen Force.',
-                composition: ['You must include Margan Earp as the Posse Boss.', 'You must include two units with both the Lawmen and Automata traits.', 'You may include a unit with the Lawmen trait.', 'You may include up to a further two units with the Lawmen and Automata traits.'],
+                composition: ['You must include Morgan Earp as the Posse Boss.', 'You must include two units with both the Lawmen and Automata traits.', 'You may include a unit with the Lawmen trait.', 'You may include up to a further two units with the Lawmen and Automata traits.'],
                 limitation: ['You may not include more than two units with the K9 Simulacra trait.'],
                 bonus: ['At the start of each round, you may remove the Disorder Condition from any units in the posse with the Automata trait within 10 inches of the posse boss.'],
             },
