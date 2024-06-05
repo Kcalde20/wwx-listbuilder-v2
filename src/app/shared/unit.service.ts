@@ -349,6 +349,88 @@ export class UnitService {
                 points: 15,
                 traits: ['Face', 'Legendary', 'Outlaws', 'Lawmen', 'Union', 'Watchers', 'Cerulean Clade', 'Priest', 'Mercenary', 'Confederate', 'Golden Army'],
             },
+            {
+                id: 'theApacheKid',
+                displayName: 'The Apache Kid',
+                points: 13,
+                traits: ['Face', 'Legendary', 'Outlaws', 'Lawmen', 'Warrior Nation', 'Regulators', 'Mercenary'],
+            },
+            {
+                id: 'unionIronhide',
+                displayName: 'Union Ironhide',
+                points: 11,
+                traits: ['Support', 'Union', 'Lawmen', 'Ram', 'Transport 6'],
+            },
+            {
+                id: 'sierraIcarus',
+                displayName: 'Sierra Icarus',
+                points: 11,
+                traits: ['Face', 'Outlaws', 'Union', 'Lawmen', 'Alliance', 'Soiled Dove', 'Warward Eight', 'Agent', 'Mercenary'],
+            },
+            {
+                id: 'thomasTateTobin',
+                displayName: 'Thomas Tate Tobin',
+                points: 12,
+                traits: ['Face', 'Legendary', 'Outlaws', 'Hex', 'Lawmen', 'Mercenary', 'Conquistadores', 'Agent', 'Tainted'],
+            },
+            {
+                id: 'yannTheWraithPacker',
+                displayName: 'Yann "The Wraith" Packer',
+                points: 11,
+                traits: ['Face', 'Outlaws', 'Hex', 'Lawmen', 'Mercenary', 'Confederate', 'Tainted'],
+            },
+            {
+                id: 'angryMob',
+                displayName: 'Angry Mob',
+                points: 1,
+                traits: ['Tainted'],
+                countMin: 3,
+                countMax: 6,
+            },
+            {
+                id: 'civilians',
+                displayName: 'Civilians',
+                points: 1,
+                traits: [],
+                countMin: 3,
+                countMax: 6,
+            },
+            {
+                id: 'hexBeast',
+                displayName: 'Hex Beast',
+                points: 0,
+                traits: ['Mutation', 'Hex Beast', 'Tainted'],
+            },
+            {
+                id: 'pandayBeck',
+                displayName: 'Panday Beck',
+                points: 7,
+                traits: ['Specialist', 'Legendary'],
+            },
+            {
+                id: 'waywardTheSmith',
+                displayName: 'The Apache Kid',
+                points: 11,
+                traits: ['Specialist', 'Legendary', 'Myth'],
+            },
+            {
+                id: 'marthaEarp',
+                displayName: 'Martha Earp',
+                points: 19,
+                traits: ['Boss', 'Lawmen', 'Marshal', 'Tombstone', 'Mounted', 'Iron Horse', 'Tainted'],
+            },
+            {
+                id: 'warrenEarp',
+                displayName: 'Warren Earp',
+                points: 15,
+                traits: ['Face', 'Lawmen', 'Outlaws', 'Mercenary', 'Tombstone', 'Mounted', 'Iron Horse'],
+            },
+            {
+                id: 'jamesEarp',
+                displayName: 'James Earp',
+                points: 15,
+                traits: ['Face', 'Lawmen', 'Automata', 'Tombstone', 'Mounted', 'Iron Horse', 'Vitruvian Simulacra'],
+            },
         ]);
     }
 }

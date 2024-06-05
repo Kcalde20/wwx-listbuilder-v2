@@ -100,7 +100,6 @@ export class ListService {
         });
     }
 
-    // todo
     removeUnit(posseId: number, unitIndex: number) {
         this.$listSignal.update((value) => {
             value.posses[posseId].units.splice(unitIndex, 1);
@@ -112,7 +111,7 @@ export class ListService {
         this.$listSignal.set({
             name: 'My List',
             faction: 'Lawmen',
-            pointLimit: 200,
+            pointLimit: 150,
             posses: [],
         });
     }
