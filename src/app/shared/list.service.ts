@@ -107,6 +107,14 @@ export class ListService {
         });
     }
 
+    updateListName(name: string) {
+        this.$listSignal.update((currentList) => ({ ...currentList, name }));
+    }
+
+    updateListPoints(pointLimit: number) {
+        this.$listSignal.update((currentPoints) => ({ ...currentPoints, pointLimit }));
+    }
+
     constructor() {
         this.$listSignal.set({
             name: 'My List',

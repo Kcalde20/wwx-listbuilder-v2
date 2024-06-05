@@ -1,6 +1,5 @@
 
 Version 0.3
-- Rig up name and points form fields
 - multi list page
 - store decisions made in local browser
 

@@ -52,10 +52,10 @@
     <div class="card-name">List Configuration</div>
     <div class="form-item">
         <label>List Name: </label>
-        <input type="text" value="My List" disabled />
+        <input type="text" (input)="listNameChange($event)" [(ngModel)]="listName" />
     </div>
     <div class="form-item">
         <label>Point Limit: </label>
-        <input type="number" value="150" disabled />
+        <input type="number" (input)="listPointsChange($event)" [(ngModel)]="listPoints" />
     </div>
 </div>
