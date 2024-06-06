@@ -1,0 +1,9 @@
+<ul>
+    @for(list of listsService.myLists(); track $index) {
+    <li>
+        <span>{{ list.name }}</span>
+        <span>{{ list.faction }}</span>
+        <span>{{ list.pointLimit }}</span>
+    </li>
+    }
+</ul>

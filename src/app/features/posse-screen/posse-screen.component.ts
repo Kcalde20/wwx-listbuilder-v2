@@ -4,11 +4,12 @@ import { PosseService } from '../../shared/posse.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ListService } from '../../shared/list.service';
 import { CommonModule } from '@angular/common';
+import { ListHeaderComponent } from '../list-header/list-header.component';
 
 @Component({
     selector: 'app-posse-screen',
     standalone: true,
-    imports: [RouterModule, CommonModule],
+    imports: [RouterModule, CommonModule, ListHeaderComponent],
     providers: [UnitService, PosseService],
     templateUrl: './posse-screen.component.html',
     styleUrl: './posse-screen.component.scss',

@@ -5,11 +5,12 @@ import { ListService } from '../../shared/list.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ListHeaderComponent } from '../list-header/list-header.component';
 
 @Component({
     selector: 'app-list-screen',
     standalone: true,
-    imports: [RouterModule, CommonModule, FormsModule],
+    imports: [RouterModule, CommonModule, FormsModule, ListHeaderComponent],
     templateUrl: './list-screen.component.html',
     styleUrls: ['./list-screen.component.scss'],
 })
