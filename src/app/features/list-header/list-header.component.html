@@ -2,7 +2,7 @@
     <h1 class="header__app-title">{{ title }}</h1>
     <span class="header__list-points">
         {{ listService.listPoints() }} /
-        {{ listService.listSignal().pointLimit }}
+        {{ listService.listSignal()[0].pointLimit }}
     </span>
     <!-- <span class="header__list-name">{{ listService.listSignal().name }}</span> -->
     <span class="header__list-name">App Version 0.2</span>

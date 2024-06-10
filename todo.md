@@ -1,14 +1,18 @@
 
-Version 0.3
-- Clean up UI responsiveness for mobile
-- Design GUI
-  
-Version 0.4
+# TODO
+
+## Version 0.2
 - multi list page
 - store decisions made in local browser
-- allow multiple factions
+- Clean up UI + responsiveness for mobile
 
-Future
+## Version 0.4
+- allow multiple factions
+- Add outlaw Posses and Units
+
+## Future
+- add Remaining factions
+- Design GUI
 - Model search
 - backend to serve models 
 - model equipment options

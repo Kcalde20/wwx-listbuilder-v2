@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ListsService } from '../../shared/lists.service';
+import { ListService } from '../../shared/list.service';
 
 @Component({
     selector: 'app-lists-screen',
@@ -9,5 +9,5 @@ import { ListsService } from '../../shared/lists.service';
     styleUrl: './lists-screen.component.scss',
 })
 export class ListsScreenComponent {
-    listsService = inject(ListsService);
+    listService = inject(ListService);
 }

@@ -23,27 +23,27 @@ export class PosseScreenComponent {
 
     myList: iUnit[] = [];
     selectedPosseIndex!: number;
-    posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex)));
+    posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex), 0));
     posseIdData = computed(() => this.posseService.getPosseById(this.posseListData().id));
 
     getId(unitId: string) {
         this.unitService.getUnitById(unitId);
     }
 
-    addUnit(unitId: string) {
-        this.listService.addUnit(Number(this.selectedPosseIndex), unitId);
+    addUnit(unitId: string, listIndex: number) {
+        this.listService.addUnit(Number(this.selectedPosseIndex), unitId, listIndex);
     }
 
-    removeUnit(unitIndex: number) {
-        this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex);
+    removeUnit(unitIndex: number, listIndex: number) {
+        this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex, listIndex);
     }
 
-    increaseUnitCount(unitIndex: number) {
-        this.listService.increaseUnitCount(this.selectedPosseIndex, unitIndex);
+    increaseUnitCount(unitIndex: number, listIndex: number) {
+        this.listService.increaseUnitCount(this.selectedPosseIndex, unitIndex, listIndex);
     }
 
-    decreaseUnitCount(unitIndex: number) {
-        this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex);
+    decreaseUnitCount(unitIndex: number, listIndex: number) {
+        this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex, listIndex);
     }
 
     ngOnInit() {

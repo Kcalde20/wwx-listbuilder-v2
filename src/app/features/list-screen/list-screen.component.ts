@@ -19,8 +19,8 @@ export class ListScreenComponent {
     posseService = inject(PosseService);
     listService = inject(ListService);
 
-    listName = model<string>(this.listService.listSignal().name);
-    listPoints = model<number>(this.listService.listSignal().pointLimit);
+    listName = model<string>(this.listService.listSignal()[0].name);
+    listPoints = model<number>(this.listService.listSignal()[0].pointLimit);
 
     listNameChange($event: Event) {
         this.listService.updateListName(this.listName());
@@ -30,11 +30,11 @@ export class ListScreenComponent {
         this.listService.updateListPoints(this.listPoints());
     }
 
-    addPosse(posse: iPosse) {
-        this.listService.addPosse(posse);
+    addPosse(posse: iPosse, listIndex: number) {
+        this.listService.addPosse(posse, listIndex);
     }
 
-    removePosse(posseIndex: number) {
-        this.listService.removePosse(posseIndex);
+    removePosse(posseIndex: number, listIndex: number) {
+        this.listService.removePosse(posseIndex, listIndex);
     }
 }

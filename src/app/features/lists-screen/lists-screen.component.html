@@ -1,5 +1,5 @@
 <ul>
-    @for(list of listsService.myLists(); track $index) {
+    @for(list of this.listService.listSignal(); track $index) {
     <li>
         <span>{{ list.name }}</span>
         <span>{{ list.faction }}</span>
