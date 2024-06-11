@@ -49,6 +49,15 @@
 
 }
 
+.list-card-name {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    font-weight:bold;
+    padding-block-end: 1rem;
+    font-size: var(--font-size-sm);
+}
+
+
 .unit-card__name {
     block-size: 1rem;
 }

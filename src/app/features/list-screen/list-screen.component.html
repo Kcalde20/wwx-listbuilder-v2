@@ -17,7 +17,8 @@
 
     <!-- Selected List -->
     <div class="main-col">
-        <div class="card-name">
+        <div class="list-card-name">
+            <a routerLink="" class="back-button">Back</a>
             {{ listService.listSignal()[listIndex].name }}
         </div>
         @for (posse of listService.listSignal()[listIndex].posses; track $index) {

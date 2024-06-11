@@ -48,6 +48,6 @@ export class PosseScreenComponent {
     }
 
     ngOnInit() {
-        this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('id'));
+        this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('posseId'));
     }
 }

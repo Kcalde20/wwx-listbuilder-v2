@@ -63,7 +63,7 @@
     <!-- Selected List -->
     <div class="main-col">
         <div class="posse-card-name">
-            <a routerLink="" class="back-button">Back</a>
+            <a routerLink="/lists/{{ listIndex }}" class="back-button">Back</a>
             <div>{{ posseListData().displayName }}</div>
             <div class="posse-points">{{ listService.getPossePoints(selectedPosseIndex, listIndex) }} pts</div>
         </div>
