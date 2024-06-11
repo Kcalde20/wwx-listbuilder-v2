@@ -19,8 +19,10 @@ export class ListScreenComponent {
     posseService = inject(PosseService);
     listService = inject(ListService);
 
-    listName = model<string>(this.listService.listSignal()[0].name);
-    listPoints = model<number>(this.listService.listSignal()[0].pointLimit);
+    listName = model<string>('loading');
+    listPoints = model<number>(0);
+
+    listIndex: number = this.listService.currentListIndex;
 
     listNameChange($event: Event) {
         this.listService.updateListName(this.listName());
@@ -36,5 +38,11 @@ export class ListScreenComponent {
 
     removePosse(posseIndex: number, listIndex: number) {
         this.listService.removePosse(posseIndex, listIndex);
+    }
+
+    ngOnInit() {
+        this.listIndex = this.listService.currentListIndex;
+        this.listName.set(this.listService.listSignal()[this.listIndex].name);
+        this.listPoints.set(this.listService.listSignal()[this.listIndex].pointLimit);
     }
 }

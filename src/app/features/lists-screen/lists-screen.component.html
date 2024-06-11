@@ -1,9 +1,12 @@
 <ul>
     @for(list of this.listService.listSignal(); track $index) {
     <li>
-        <span>{{ list.name }}</span>
-        <span>{{ list.faction }}</span>
-        <span>{{ list.pointLimit }}</span>
+        <a routerLink="/lists/{{ $index }}" (click)="setList($index)">
+            <span>{{ list.name }}</span>
+            <span>{{ list.faction }}</span>
+            <span>{{ list.pointLimit }}</span>
+        </a>
     </li>
     }
 </ul>
+<button (click)="addList()">+ New List</button>

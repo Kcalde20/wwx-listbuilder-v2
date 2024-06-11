@@ -28,6 +28,8 @@ export class ListService {
         return points;
     });
 
+    currentListIndex = 0;
+
     getPossePoints(posseIndex: number, listIndex: number) {
         let points = 0;
         for (let unit of this.listSignal()[listIndex].posses[posseIndex].units) {
@@ -124,7 +126,7 @@ export class ListService {
     updateListName(name: string) {
         this.$listSignal.update((value) => {
             const updatedList = [...value];
-            updatedList[0].name = name;
+            updatedList[this.currentListIndex].name = name;
             return updatedList;
         });
     }
@@ -132,8 +134,21 @@ export class ListService {
     updateListPoints(pointLimit: number) {
         this.$listSignal.update((value) => {
             const updatedList = [...value];
-            updatedList[0].pointLimit = pointLimit;
+            updatedList[this.currentListIndex].pointLimit = pointLimit;
             return updatedList;
+        });
+    }
+
+    addList() {
+        this.$listSignal.update((value) => {
+            const newValue = [...value];
+            newValue.push({
+                name: 'new List',
+                faction: 'Lawmen',
+                pointLimit: 150,
+                posses: [],
+            });
+            return newValue;
         });
     }
 
