@@ -149,3 +149,8 @@
     color: var(--color-text-2);
     font-size: var(--font-size-sm);
 }
+
+.unit__count-selector {
+    display: flex;
+    flex-wrap: nowrap;
+}
