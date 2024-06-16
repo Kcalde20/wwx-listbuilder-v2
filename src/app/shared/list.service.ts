@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal, effect } from '@angular/core';
 import { PosseService, iPosse } from './posse.service';
 import { UnitService, iUnit } from './unit.service';
 
@@ -161,20 +161,41 @@ export class ListService {
         });
     }
 
+    storeChanges() {
+        if (!localStorage.getItem('listsData')) {
+            localStorage.setItem('listsData', JSON.stringify(this.$listSignal()));
+        }
+    }
+
+    getChanges() {
+        let listData = localStorage.getItem('listsData');
+        if (listData) {
+            listData = JSON.parse(listData as string);
+            this.$listSignal.update((data) => {
+                return listData as unknown as iList[];
+            });
+        } else {
+            localStorage.setItem('listsData', '[]');
+        }
+    }
+
+    firstSync = true;
+
+    synchronizeListsEffect = effect(() => {
+        const storage = localStorage.getItem('listsData');
+        const state = this.$listSignal();
+        switch (this.firstSync) {
+            case true: {
+                this.firstSync = false;
+                break;
+            }
+            default: {
+                localStorage.setItem('listsData', JSON.stringify(this.$listSignal()));
+            }
+        }
+    });
+
     constructor() {
-        this.$listSignal.set([
-            {
-                name: 'My First List',
-                faction: 'Lawmen',
-                pointLimit: 150,
-                posses: [],
-            },
-            {
-                name: 'second List',
-                faction: 'Lawmen',
-                pointLimit: 150,
-                posses: [],
-            },
-        ]);
+        this.getChanges();
     }
 }
