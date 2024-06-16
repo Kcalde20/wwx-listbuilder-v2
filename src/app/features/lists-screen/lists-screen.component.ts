@@ -20,4 +20,8 @@ export class ListsScreenComponent {
     addList() {
         this.listService.addList();
     }
+
+    removeList(listIndex: number) {
+        this.listService.removeList(listIndex);
+    }
 }

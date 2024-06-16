@@ -71,3 +71,10 @@
         }
     }
 }
+
+.list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    align-items: center;
+}

@@ -153,6 +153,14 @@ export class ListService {
         });
     }
 
+    removeList(listIndex: number) {
+        this.$listSignal.update((value) => {
+            const newValue = [...value];
+            newValue.splice(listIndex, 1);
+            return newValue;
+        });
+    }
+
     constructor() {
         this.$listSignal.set([
             {
