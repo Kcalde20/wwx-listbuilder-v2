@@ -4,11 +4,12 @@ import { PosseService } from '../../shared/posse.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ListService } from '../../shared/list.service';
 import { CommonModule } from '@angular/common';
+import { ListHeaderComponent } from '../list-header/list-header.component';
 
 @Component({
     selector: 'app-posse-screen',
     standalone: true,
-    imports: [RouterModule, CommonModule],
+    imports: [RouterModule, CommonModule, ListHeaderComponent],
     providers: [UnitService, PosseService],
     templateUrl: './posse-screen.component.html',
     styleUrl: './posse-screen.component.scss',
@@ -21,31 +22,32 @@ export class PosseScreenComponent {
     route = inject(ActivatedRoute);
 
     myList: iUnit[] = [];
+    listIndex: number = this.listService.currentListIndex();
     selectedPosseIndex!: number;
-    posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex)));
+    posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex), this.listIndex));
     posseIdData = computed(() => this.posseService.getPosseById(this.posseListData().id));
 
     getId(unitId: string) {
         this.unitService.getUnitById(unitId);
     }
 
-    addUnit(unitId: string) {
-        this.listService.addUnit(Number(this.selectedPosseIndex), unitId);
+    addUnit(unitId: string, listIndex: number) {
+        this.listService.addUnit(Number(this.selectedPosseIndex), unitId, listIndex);
     }
 
-    removeUnit(unitIndex: number) {
-        this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex);
+    removeUnit(unitIndex: number, listIndex: number) {
+        this.listService.removeUnit(Number(this.selectedPosseIndex), unitIndex, listIndex);
     }
 
-    increaseUnitCount(unitIndex: number) {
-        this.listService.increaseUnitCount(this.selectedPosseIndex, unitIndex);
+    increaseUnitCount(unitIndex: number, listIndex: number) {
+        this.listService.increaseUnitCount(this.selectedPosseIndex, unitIndex, listIndex);
     }
 
-    decreaseUnitCount(unitIndex: number) {
-        this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex);
+    decreaseUnitCount(unitIndex: number, listIndex: number) {
+        this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex, listIndex);
     }
 
     ngOnInit() {
-        this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('id'));
+        this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('posseId'));
     }
 }

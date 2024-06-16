@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal, effect } from '@angular/core';
 import { PosseService, iPosse } from './posse.service';
 import { UnitService, iUnit } from './unit.service';
 
@@ -13,12 +13,7 @@ export interface iList {
     providedIn: 'root',
 })
 export class ListService {
-    private $listSignal = signal<iList>({
-        name: '',
-        faction: '',
-        pointLimit: 0,
-        posses: [],
-    });
+    private $listSignal = signal<iList[]>([]);
     listSignal = computed(() => this.$listSignal());
 
     unitService = inject(UnitService);
@@ -26,16 +21,19 @@ export class ListService {
 
     listPoints = computed(() => {
         let points = 0;
-        const posses = this.listSignal().posses;
+        let list = this.currentListIndex();
+        const posses = this.$listSignal()[list].posses;
         for (let i = 0; i < posses.length; i++) {
-            points += this.getPossePoints(i);
+            points += this.getPossePoints(i, list);
         }
         return points;
     });
 
-    getPossePoints(posseIndex: number) {
+    currentListIndex = signal(0);
+
+    getPossePoints(posseIndex: number, listIndex: number) {
         let points = 0;
-        for (let unit of this.listSignal().posses[posseIndex].units) {
+        for (let unit of this.listSignal()[this.currentListIndex()].posses[posseIndex].units) {
             let unitData = this.unitService.getUnitById(unit.id);
             if (unit.count) {
                 points = points + unitData!.points * unit.count;
@@ -46,74 +44,158 @@ export class ListService {
         return points;
     }
 
-    addPosse(posse: any) {
+    addPosse(posse: any, listIndex: number) {
         this.$listSignal.update((value) => {
             const newPosse = {
                 id: posse.id,
                 displayName: posse.displayName,
                 units: [],
             };
-            return {
-                ...value,
-                posses: [...value.posses, newPosse],
+            const updatedList = {
+                ...value[listIndex],
+                posses: [...value[listIndex].posses, newPosse],
             };
+            const updatedLists = [...value];
+            updatedLists[listIndex] = updatedList;
+            return updatedLists;
         });
     }
 
-    removePosse(posseIndex: number) {
+    removePosse(posseIndex: number, listIndex: number) {
         this.$listSignal.update((value) => {
-            value.posses.splice(posseIndex, 1);
-            return { ...value };
+            const updatedList = { ...value[listIndex] };
+            updatedList.posses.splice(posseIndex, 1);
+            const updatedLists = [...value];
+            updatedLists[listIndex] = updatedList;
+            return updatedLists;
         });
     }
 
-    getPosseById(id: number) {
-        return this.$listSignal().posses[id];
+    getPosseById(id: number, listIndex: number) {
+        return this.$listSignal()[listIndex].posses[id];
     }
 
-    addUnit(posseId: number, unitId: string) {
+    addUnit(posseId: number, unitId: string, listIndex: number) {
         this.$listSignal.update((value) => {
-            if (this.unitService.getUnitById(unitId)?.countMin) {
-                value.posses[posseId].units.push({ id: unitId, count: this.unitService.getUnitById(unitId)?.countMin });
-            } else {
-                value.posses[posseId].units.push({ id: unitId });
+            const newUnit = this.unitService.getUnitById(unitId);
+            if (newUnit) {
+                const updatedList = { ...value[listIndex] };
+                updatedList.posses[posseId].units.push({
+                    id: unitId,
+                    count: newUnit.countMin || undefined,
+                });
+                const updatedLists = [...value];
+                updatedLists[listIndex] = updatedList;
+                return updatedLists;
             }
-            return { ...value };
+            return value;
         });
     }
 
-    increaseUnitCount(posseIndex: number, unitIndex: number) {
+    increaseUnitCount(posseIndex: number, unitIndex: number, listIndex: number) {
         this.$listSignal.update((value) => {
-            if (value.posses[posseIndex].units[unitIndex].count && value.posses[posseIndex].units[unitIndex].count < this.unitService.getUnitById(value.posses[posseIndex].units[unitIndex].id)?.countMax!) {
-                value.posses[posseIndex].units[unitIndex].count++;
+            const unit = value[listIndex].posses[posseIndex].units[unitIndex];
+            const unitData = this.unitService.getUnitById(unit.id);
+            if (unit.count && unitData?.countMax && unit.count < unitData?.countMax) {
+                unit.count++;
             }
-            return { ...value };
+            return [...value];
         });
     }
 
-    decreaseUnitCount(posseIndex: number, unitIndex: number) {
+    decreaseUnitCount(posseIndex: number, unitIndex: number, listIndex: number) {
         this.$listSignal.update((value) => {
-            if (value.posses[posseIndex].units[unitIndex].count && value.posses[posseIndex].units[unitIndex].count > this.unitService.getUnitById(value.posses[posseIndex].units[unitIndex].id)?.countMin!) {
-                value.posses[posseIndex].units[unitIndex].count--;
+            const unit = value[listIndex].posses[posseIndex].units[unitIndex];
+            const unitData = this.unitService.getUnitById(unit.id);
+            if (unit.count && unitData?.countMin && unit.count > unitData.countMin) {
+                unit.count--;
             }
-            return { ...value };
+            return [...value];
         });
     }
 
-    // todo
-    removeUnit(posseId: number, unitIndex: number) {
+    removeUnit(posseId: number, unitIndex: number, listIndex: number) {
         this.$listSignal.update((value) => {
-            value.posses[posseId].units.splice(unitIndex, 1);
-            return { ...value };
+            const updatedList = { ...value[listIndex] };
+            updatedList.posses[posseId].units.splice(unitIndex, 1);
+            const updatedLists = [...value];
+            updatedLists[listIndex] = updatedList;
+            return updatedLists;
         });
     }
+
+    updateListName(name: string) {
+        this.$listSignal.update((value) => {
+            const updatedList = [...value];
+            updatedList[this.currentListIndex()].name = name;
+            return updatedList;
+        });
+    }
+
+    updateListPoints(pointLimit: number) {
+        this.$listSignal.update((value) => {
+            const updatedList = [...value];
+            updatedList[this.currentListIndex()].pointLimit = pointLimit;
+            return updatedList;
+        });
+    }
+
+    addList() {
+        this.$listSignal.update((value) => {
+            const newValue = [...value];
+            newValue.push({
+                name: 'new List',
+                faction: 'Lawmen',
+                pointLimit: 150,
+                posses: [],
+            });
+            return newValue;
+        });
+    }
+
+    removeList(listIndex: number) {
+        this.$listSignal.update((value) => {
+            const newValue = [...value];
+            newValue.splice(listIndex, 1);
+            return newValue;
+        });
+    }
+
+    storeChanges() {
+        if (!localStorage.getItem('listsData')) {
+            localStorage.setItem('listsData', JSON.stringify(this.$listSignal()));
+        }
+    }
+
+    getChanges() {
+        let listData = localStorage.getItem('listsData');
+        if (listData) {
+            listData = JSON.parse(listData as string);
+            this.$listSignal.update((data) => {
+                return listData as unknown as iList[];
+            });
+        } else {
+            localStorage.setItem('listsData', '[]');
+        }
+    }
+
+    firstSync = true;
+
+    synchronizeListsEffect = effect(() => {
+        const storage = localStorage.getItem('listsData');
+        const state = this.$listSignal();
+        switch (this.firstSync) {
+            case true: {
+                this.firstSync = false;
+                break;
+            }
+            default: {
+                localStorage.setItem('listsData', JSON.stringify(this.$listSignal()));
+            }
+        }
+    });
 
     constructor() {
-        this.$listSignal.set({
-            name: 'My List',
-            faction: 'Lawmen',
-            pointLimit: 200,
-            posses: [],
-        });
+        this.getChanges();
     }
 }

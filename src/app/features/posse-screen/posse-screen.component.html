@@ -1,122 +1,125 @@
+<app-list-header></app-list-header>
 <!-- Unit List -->
-<div class="unit-col">
-    <div class="card-name">Add Models</div>
-    <p class="unit__separator">Bosses</p>
-    @for ( unit of unitService.getUnitsByTrait("Boss"); track $index ) {
-    <div class="posse-list">
-        <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
-        <button class="button --positive" (click)="addUnit(unit.id)">
-            <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-            </svg>
-        </button>
+<div class="page-grid">
+    <div class="unit-col">
+        <div class="card-name">Add Models</div>
+        <p class="unit__separator">Bosses</p>
+        @for ( unit of unitService.getUnitsByTrait("Boss"); track $index ) {
+        <div class="posse-list">
+            <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Faces</p>
+        @for ( unit of unitService.getUnitsByTrait("Face"); track $index ) {
+        <div class="posse-list">
+            <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Hands</p>
+        @for ( unit of unitService.getUnitsByTrait("Hands"); track $index ) {
+        <div class="posse-list">
+            <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Specialists</p>
+        @for ( unit of unitService.getUnitsByTrait("Specialist"); track $index ) {
+        <div class="posse-list">
+            <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Supports</p>
+        @for ( unit of unitService.getUnitsByTrait("Support"); track $index ) {
+        <div class="posse-list">
+            <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
     </div>
-    }
-    <p class="unit__separator">Faces</p>
-    @for ( unit of unitService.getUnitsByTrait("Face"); track $index ) {
-    <div class="posse-list">
-        <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
-        <button class="button --positive" (click)="addUnit(unit.id)">
-            <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-            </svg>
-        </button>
-    </div>
-    }
-    <p class="unit__separator">Hands</p>
-    @for ( unit of unitService.getUnitsByTrait("Hands"); track $index ) {
-    <div class="posse-list">
-        <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
-        <button class="button --positive" (click)="addUnit(unit.id)">
-            <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-            </svg>
-        </button>
-    </div>
-    }
-    <p class="unit__separator">Specialists</p>
-    @for ( unit of unitService.getUnitsByTrait("Specialist"); track $index ) {
-    <div class="posse-list">
-        <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
-        <button class="button --positive" (click)="addUnit(unit.id)">
-            <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-            </svg>
-        </button>
-    </div>
-    }
-    <p class="unit__separator">Supports</p>
-    @for ( unit of unitService.getUnitsByTrait("Support"); track $index ) {
-    <div class="posse-list">
-        <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
-        <button class="button --positive" (click)="addUnit(unit.id)">
-            <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-            </svg>
-        </button>
-    </div>
-    }
-</div>
 
-<!-- Selected List -->
-<div class="main-col">
-    <div class="posse-card-name">
-        <a routerLink="" class="back-button">Back</a>
-        <div>{{ posseListData().displayName }}</div>
-        <div class="posse-points">{{ listService.getPossePoints(selectedPosseIndex) }} pts</div>
-    </div>
-    @for ( unit of posseListData().units; track $index) {
-    <div class="unit-card">
-        <div>
-            <span>{{ this.unitService.getUnitById(unit.id)!.displayName }} -</span>
-            <span> {{ this.unitService.getUnitById(unit.id)!.points }}pts</span>
-            <div class="unit__info">
-                @for(traits of this.unitService.getUnitById(unit.id)!.traits; track $index){
-                <span>{{ traits }}</span>
-                }
+    <!-- Selected List -->
+    <div class="main-col">
+        <div class="posse-card-name">
+            <a routerLink="/lists/{{ listIndex }}" class="back-button">Back</a>
+            <div>{{ posseListData().displayName }}</div>
+            <div class="posse-points">{{ listService.getPossePoints(selectedPosseIndex, listIndex) }} pts</div>
+        </div>
+        @for ( unit of posseListData().units; track $index) {
+        <div class="unit-card">
+            <div>
+                <span>{{ this.unitService.getUnitById(unit.id)!.displayName }} -</span>
+                <span> {{ this.unitService.getUnitById(unit.id)!.points }}pts</span>
+                <div class="unit__info">
+                    @for(traits of this.unitService.getUnitById(unit.id)!.traits; track $index){
+                    <span>{{ traits }}</span>
+                    }
+                </div>
             </div>
+            @if(unit.count) {
+            <div class="unit__count-selector">
+                <button (click)="this.decreaseUnitCount($index, listIndex)" [disabled]="unit.count === this.unitService.getUnitById(unit.id)?.countMin">-</button>
+                <span> {{ unit.count }}x </span>
+                <button (click)="this.increaseUnitCount($index, listIndex)" [disabled]="unit.count === this.unitService.getUnitById(unit.id)?.countMax">+</button>
+            </div>
+            }
+            <button class="button --negative" (click)="removeUnit($index, listIndex)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" height="1em" width="1em">
+                    <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                </svg>
+            </button>
         </div>
-        @if(unit.count) {
-        <div class="unit__count-selector">
-            <button (click)="this.decreaseUnitCount($index)" [disabled]="unit.count === this.unitService.getUnitById(unit.id)?.countMin">-</button>
-            <span> {{ unit.count }}x </span>
-            <button (click)="this.increaseUnitCount($index)" [disabled]="unit.count === this.unitService.getUnitById(unit.id)?.countMax">+</button>
-        </div>
+        } @empty {
+        <img class="empty-image" src="assets/empty.png" />
+        <p class="empty-text">Add units</p>
         }
-        <button class="button --negative" (click)="removeUnit($index)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" height="1em" width="1em">
-                <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-            </svg>
-        </button>
     </div>
-    } @empty {
-    <img class="empty-image" src="assets/empty.png" />
-    <p class="empty-text">Add units</p>
-    }
-</div>
 
-<!-- Options / Rules Panel -->
-<div class="options-col">
-    <div class="card-name">Posse Rules</div>
-    <p class="posse__description">
-        {{ this.posseIdData()?.description }}
-    </p>
-    <strong class="section__title">COMPOSITION:</strong>
-    <ul class="composition__ul">
-        @for ( compositions of this.posseIdData()?.composition; track $index) {
-        <li class="composition__li">{{ compositions }}</li>
-        }
-    </ul>
-    <strong class="section__title">LIMITATION:</strong>
-    <ul class="limitation__ul">
-        @for ( limitations of this.posseIdData()?.limitation; track $index) {
-        <li class="limitation__li">{{ limitations }}</li>
-        }
-    </ul>
-    <strong class="section__title">BONUS:</strong>
-    <ul class="bonus__ul">
-        @for ( bonuses of this.posseIdData()?.bonus; track $index) {
-        <li class="bonus__li">{{ bonuses }}</li>
-        }
-    </ul>
+    <!-- Options / Rules Panel -->
+    <div class="options-col">
+        <div class="card-name">Posse Rules</div>
+        <p class="posse__description">
+            {{ this.posseIdData()?.description }}
+        </p>
+        <strong class="section__title">COMPOSITION:</strong>
+        <ul class="composition__ul">
+            @for ( compositions of this.posseIdData()?.composition; track $index) {
+            <li class="composition__li">{{ compositions }}</li>
+            }
+        </ul>
+        <strong class="section__title">LIMITATION:</strong>
+        <ul class="limitation__ul">
+            @for ( limitations of this.posseIdData()?.limitation; track $index) {
+            <li class="limitation__li">{{ limitations }}</li>
+            }
+        </ul>
+        <strong class="section__title">BONUS:</strong>
+        <ul class="bonus__ul">
+            @for ( bonuses of this.posseIdData()?.bonus; track $index) {
+            <li class="bonus__li">{{ bonuses }}</li>
+            }
+        </ul>
+    </div>
 </div>
