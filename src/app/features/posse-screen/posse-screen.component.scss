@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 800px){
-    :host {
+    .page-grid {
         grid-template-columns: 1fr;
         grid-template-areas: " b "
                             " a "

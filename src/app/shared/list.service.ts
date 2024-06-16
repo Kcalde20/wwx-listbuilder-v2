@@ -21,18 +21,19 @@ export class ListService {
 
     listPoints = computed(() => {
         let points = 0;
-        const posses = this.listSignal()[0].posses;
+        let list = this.currentListIndex();
+        const posses = this.$listSignal()[list].posses;
         for (let i = 0; i < posses.length; i++) {
-            points += this.getPossePoints(i, 0);
+            points += this.getPossePoints(i, list);
         }
         return points;
     });
 
-    currentListIndex = 0;
+    currentListIndex = signal(0);
 
     getPossePoints(posseIndex: number, listIndex: number) {
         let points = 0;
-        for (let unit of this.listSignal()[listIndex].posses[posseIndex].units) {
+        for (let unit of this.listSignal()[this.currentListIndex()].posses[posseIndex].units) {
             let unitData = this.unitService.getUnitById(unit.id);
             if (unit.count) {
                 points = points + unitData!.points * unit.count;
@@ -98,7 +99,7 @@ export class ListService {
             if (unit.count && unitData?.countMax && unit.count < unitData?.countMax) {
                 unit.count++;
             }
-            return value;
+            return [...value];
         });
     }
 
@@ -109,7 +110,7 @@ export class ListService {
             if (unit.count && unitData?.countMin && unit.count > unitData.countMin) {
                 unit.count--;
             }
-            return value;
+            return [...value];
         });
     }
 
@@ -126,7 +127,7 @@ export class ListService {
     updateListName(name: string) {
         this.$listSignal.update((value) => {
             const updatedList = [...value];
-            updatedList[this.currentListIndex].name = name;
+            updatedList[this.currentListIndex()].name = name;
             return updatedList;
         });
     }
@@ -134,7 +135,7 @@ export class ListService {
     updateListPoints(pointLimit: number) {
         this.$listSignal.update((value) => {
             const updatedList = [...value];
-            updatedList[this.currentListIndex].pointLimit = pointLimit;
+            updatedList[this.currentListIndex()].pointLimit = pointLimit;
             return updatedList;
         });
     }

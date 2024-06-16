@@ -22,7 +22,7 @@ export class PosseScreenComponent {
     route = inject(ActivatedRoute);
 
     myList: iUnit[] = [];
-    listIndex: number = this.listService.currentListIndex;
+    listIndex: number = this.listService.currentListIndex();
     selectedPosseIndex!: number;
     posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex), this.listIndex));
     posseIdData = computed(() => this.posseService.getPosseById(this.posseListData().id));

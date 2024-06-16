@@ -22,7 +22,7 @@ export class ListScreenComponent {
     listName = model<string>('loading');
     listPoints = model<number>(0);
 
-    listIndex: number = this.listService.currentListIndex;
+    listIndex: number = this.listService.currentListIndex();
 
     listNameChange($event: Event) {
         this.listService.updateListName(this.listName());
@@ -41,7 +41,7 @@ export class ListScreenComponent {
     }
 
     ngOnInit() {
-        this.listIndex = this.listService.currentListIndex;
+        this.listIndex = this.listService.currentListIndex();
         this.listName.set(this.listService.listSignal()[this.listIndex].name);
         this.listPoints.set(this.listService.listSignal()[this.listIndex].pointLimit);
     }

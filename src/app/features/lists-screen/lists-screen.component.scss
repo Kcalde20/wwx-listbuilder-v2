@@ -1,0 +1,73 @@
+.header {
+    background-color: white;
+    border-block-end: 1px solid var(--color-border-1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 1rem;
+}
+
+@media screen and (max-width: 800px){
+    .header {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding-block-end: 1rem;
+    }
+    .header__app-title, .header__list-name, .header__list-points {
+        text-align: center !important;
+    }
+}
+
+.list-info {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: .5rem;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.header__app-title {
+    text-align: start;
+    line-height: 1.1;
+    font-size: var(--font-size-lg);
+}
+
+.header__list-points,
+.header__list-name {
+    align-self: center;
+}
+
+.header__list-name {
+    text-align: end;
+}
+
+.header__list-points {
+    text-align: center;
+}
+
+.list-section {
+    background-color: white;
+    border: 1px solid var(--color-border-1);
+    padding: 1rem;
+    margin: .75rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+
+    & ul {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: .75rem;
+
+        & li {
+            list-style: none;
+        }
+
+        a { 
+            gap: .3rem;
+            text-decoration: none;
+        }
+    }
+}

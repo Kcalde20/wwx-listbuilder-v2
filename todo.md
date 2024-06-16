@@ -1,12 +1,13 @@
 
 # TODO
 
-## Version 0.2
-- multi list page
+## Version 0.3
 - store decisions made in local browser
 - Clean up UI + responsiveness for mobile
 
 ## Version 0.4
+- clean up services
+- clean up components
 - allow multiple factions
 - Add outlaw Posses and Units
 

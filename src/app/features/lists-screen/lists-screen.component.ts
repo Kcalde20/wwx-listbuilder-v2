@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ListService } from '../../shared/list.service';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,10 +10,11 @@ import { RouterLink } from '@angular/router';
     styleUrl: './lists-screen.component.scss',
 })
 export class ListsScreenComponent {
+    title = "Kevin's WWX-Listbuilder";
     listService = inject(ListService);
 
     setList(listIndex: number) {
-        this.listService.currentListIndex = listIndex;
+        this.listService.currentListIndex.set(listIndex);
     }
 
     addList() {

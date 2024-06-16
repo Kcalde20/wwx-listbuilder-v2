@@ -1,12 +1,19 @@
-<ul>
-    @for(list of this.listService.listSignal(); track $index) {
-    <li>
-        <a routerLink="/lists/{{ $index }}" (click)="setList($index)">
-            <span>{{ list.name }}</span>
-            <span>{{ list.faction }}</span>
-            <span>{{ list.pointLimit }}</span>
-        </a>
-    </li>
-    }
-</ul>
-<button (click)="addList()">+ New List</button>
+<div class="header">
+    <h1 class="header__app-title">{{ title }}</h1>
+    <!-- <span class="header__list-name">{{ listService.listSignal().name }}</span> -->
+    <span class="header__list-name">App Version 0.2</span>
+</div>
+
+<div class="list-section">
+    <ul>
+        @for(list of this.listService.listSignal(); track $index) {
+        <li>
+            <a routerLink="/lists/{{ $index }}" (click)="setList($index)">
+                <span>{{ list.faction }}</span>
+                <span> - {{ list.name }}</span>
+            </a>
+        </li>
+        }
+    </ul>
+    <button (click)="addList()">+ New List</button>
+</div>

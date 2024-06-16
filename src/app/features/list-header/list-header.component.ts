@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ListService } from '../../shared/list.service';
 import { PosseService } from '../../shared/posse.service';
 
@@ -13,5 +13,6 @@ export class ListHeaderComponent {
     title = "Kevin's WWX-Listbuilder";
 
     listService = inject(ListService);
-    posseService = inject(PosseService);
+
+    listIndex = this.listService.currentListIndex();
 }
