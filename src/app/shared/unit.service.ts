@@ -25,6 +25,18 @@ export class UnitService {
         return this.$UnitListSignal().filter((unit) => unit.traits?.includes(unitTrait));
     }
 
+    getMatchingTraitsOnUnit(unitId: string, traits: string[]) {
+        const unit: iUnit = this.getUnitById(unitId) as iUnit;
+        const matchingTraits = new Set<string>();
+        for (const trait of unit.traits) {
+            if (traits.includes(trait)) {
+                matchingTraits.add(trait);
+            }
+        }
+
+        return Array.from(matchingTraits);
+    }
+
     constructor() {
         this.$UnitListSignal.set([
             {
@@ -49,7 +61,7 @@ export class UnitService {
                 id: 'calamityJane',
                 displayName: 'Calamity Jane',
                 points: 12,
-                traits: ['Face', 'Legendary', 'Outlaws', 'Mercenary', 'Ranger'],
+                traits: ['Face', 'Lawmen', 'Legendary', 'Outlaws', 'Mercenary', 'Ranger'],
             },
             {
                 id: 'deputizedGunslingers',
@@ -409,7 +421,7 @@ export class UnitService {
             },
             {
                 id: 'waywardTheSmith',
-                displayName: 'The Apache Kid',
+                displayName: 'Warward The Smith',
                 points: 11,
                 traits: ['Specialist', 'Legendary', 'Myth'],
             },

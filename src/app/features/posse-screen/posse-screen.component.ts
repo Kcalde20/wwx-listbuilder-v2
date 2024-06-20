@@ -47,6 +47,10 @@ export class PosseScreenComponent {
         this.listService.decreaseUnitCount(this.selectedPosseIndex, unitIndex, listIndex);
     }
 
+    getMatchingTraitsOnUnit(unitId: string, traits: string[]) {
+        this.unitService.getMatchingTraitsOnUnit(unitId, traits);
+    }
+
     ngOnInit() {
         this.selectedPosseIndex = Number(this.route.snapshot.paramMap.get('posseId'));
     }
