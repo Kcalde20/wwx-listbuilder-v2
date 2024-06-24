@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ListService } from '../../shared/list.service';
 import { RouterLink } from '@angular/router';
+import { UnitCardComponent } from '../unit-card/unit-card.component';
 
 @Component({
     selector: 'app-lists-screen',
     standalone: true,
-    imports: [RouterLink],
+    imports: [RouterLink, UnitCardComponent],
     templateUrl: './lists-screen.component.html',
     styleUrl: './lists-screen.component.scss',
 })

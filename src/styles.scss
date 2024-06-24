@@ -41,3 +41,24 @@ body {
         background-color: rgb(245, 245, 245) !important;
     }
 }
+
+.badge {
+    padding: .25rem .5rem;
+    border-radius: 6px;
+    min-inline-size: 2ch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: gray;
+    color: white;
+
+    &.--negative {
+        color: white;
+        background-color: var(--cr-color-negative);
+    }
+    &.--positive {
+        color: white;
+        background-color: var(--cr-color-positive);
+    }
+}
