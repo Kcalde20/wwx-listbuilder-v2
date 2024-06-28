@@ -1,4 +1,4 @@
-<app-list-header></app-list-header>
+<app-list-header [title]="posseListData().displayName" backRoute="/lists/{{ listIndex }}"></app-list-header>
 <!-- Unit List -->
 <div class="page-grid">
     <div class="unit-col">
@@ -88,9 +88,8 @@
     <!-- Selected List -->
     <div class="main-col">
         <div class="posse-card-name">
-            <a routerLink="/lists/{{ listIndex }}" class="back-button">Back</a>
-            <div>{{ posseListData().displayName }}</div>
-            <div class="posse-points">{{ listService.getPossePoints(selectedPosseIndex, listIndex) }} pts</div>
+            <div>Selected Units</div>
+            <div class="badge posse-points">{{ listService.getPossePoints(selectedPosseIndex, listIndex) }}</div>
         </div>
         @for ( unit of posseListData().units; track $index) {
         <app-unit-card [unit]="unit" (onRemoveUnit)="removeUnit($index, listIndex)" (onIncreaseUnitCount)="increaseUnitCount($index, listIndex)" (onDecreaseUnitCount)="decreaseUnitCount($index, listIndex)"></app-unit-card>

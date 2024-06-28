@@ -55,10 +55,10 @@ body {
 
     &.--negative {
         color: white;
-        background-color: var(--cr-color-negative);
+        background-color: var(--color-negative);
     }
     &.--positive {
         color: white;
-        background-color: var(--cr-color-positive);
+        background-color: var(--color-positive);
     }
 }

@@ -1,4 +1,4 @@
-<app-list-header></app-list-header>
+<app-list-header [title]="listService.listSignal()[listIndex].name"></app-list-header>
 <!-- Unit List -->
 <div class="page-grid">
     <div class="unit-col">
@@ -17,10 +17,7 @@
 
     <!-- Selected List -->
     <div class="main-col">
-        <div class="list-card-name">
-            <a routerLink="" class="back-button">Back</a>
-            {{ listService.listSignal()[listIndex].name }}
-        </div>
+        <div class="card-name">Selected Posses</div>
         @for (posse of listService.listSignal()[listIndex].posses; track $index) {
         <div class="unit-card">
             <div class="unit-card__header">
