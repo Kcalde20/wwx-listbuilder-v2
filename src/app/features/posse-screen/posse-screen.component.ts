@@ -27,6 +27,7 @@ export class PosseScreenComponent {
     selectedPosseIndex!: number;
     posseListData = computed(() => this.listService.getPosseById(Number(this.selectedPosseIndex), this.listIndex));
     posseIdData = computed(() => this.posseService.getPosseById(this.posseListData().id));
+    modelListOpen: boolean = false;
 
     getId(unitId: string) {
         this.unitService.getUnitById(unitId);
@@ -50,6 +51,16 @@ export class PosseScreenComponent {
 
     getMatchingTraitsOnUnit(unitId: string, traits: string[]) {
         this.unitService.getMatchingTraitsOnUnit(unitId, traits);
+    }
+
+    openModal(modalId: string) {
+        const dialog: HTMLDialogElement = document.getElementById(modalId) as HTMLDialogElement;
+        dialog?.showModal();
+    }
+
+    closeModal(modalId: string) {
+        const dialog: HTMLDialogElement = document.getElementById(modalId) as HTMLDialogElement;
+        dialog?.close();
     }
 
     ngOnInit() {

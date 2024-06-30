@@ -125,3 +125,99 @@
         </ul>
     </div>
 </div>
+
+<!-- Add Unit Dialog -->
+<dialog class="dialog" id="addUnitDialog">
+    <div class="dialog__body">
+        <div class="posse-card-name">
+            <div class="card-name">Add Models</div>
+            <button (click)="closeModal('addUnitDialog')">close</button>
+        </div>
+
+        <p class="unit__separator">Bosses</p>
+        @for ( unit of unitService.getUnitsByTrait("Boss"); track $index ) {
+        <div class="posse-list">
+            <div>
+                <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+                <div class="unit__info">
+                    @for ( trait of unitService.getMatchingTraitsOnUnit( unit.id, this.posseIdData()!.relevantTraits!); track $index) { <span>{{ trait }}</span> }
+                </div>
+            </div>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Faces</p>
+        @for ( unit of unitService.getUnitsByTrait("Face"); track $index ) {
+        <div class="posse-list">
+            <div>
+                <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+                <div class="unit__info">
+                    @for ( trait of unitService.getMatchingTraitsOnUnit( unit.id, this.posseIdData()!.relevantTraits!); track $index) { <span>{{ trait }}</span> }
+                </div>
+            </div>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Hands</p>
+        @for ( unit of unitService.getUnitsByTrait("Hands"); track $index ) {
+        <div class="posse-list">
+            <div>
+                <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+                <div class="unit__info">
+                    @for ( trait of unitService.getMatchingTraitsOnUnit( unit.id, this.posseIdData()!.relevantTraits!); track $index) { <span>{{ trait }}</span> }
+                </div>
+            </div>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Specialists</p>
+        @for ( unit of unitService.getUnitsByTrait("Specialist"); track $index ) {
+        <div class="posse-list">
+            <div>
+                <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+                <div class="unit__info">
+                    @for ( trait of unitService.getMatchingTraitsOnUnit( unit.id, this.posseIdData()!.relevantTraits!); track $index) { <span>{{ trait }}</span> }
+                </div>
+            </div>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+        <p class="unit__separator">Supports</p>
+        @for ( unit of unitService.getUnitsByTrait("Support"); track $index ) {
+        <div class="posse-list">
+            <div>
+                <span>{{ unit.displayName }} - {{ unit.points }} pts</span>
+                <div class="unit__info">
+                    @for ( trait of unitService.getMatchingTraitsOnUnit( unit.id, this.posseIdData()!.relevantTraits!); track $index) { <span>{{ trait }}</span> }
+                </div>
+            </div>
+            <button class="button --positive" (click)="addUnit(unit.id, listIndex)">
+                <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
+            </button>
+        </div>
+        }
+    </div>
+</dialog>
+<button class="add-button" id="addUnitButton" (click)="openModal('addUnitDialog')">
+    <svg fill="currentColor" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+    </svg>
+</button>

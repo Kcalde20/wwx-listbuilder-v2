@@ -1,19 +1,9 @@
 .page-grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "a b c" ;
     gap: .75rem;
     padding: .75rem;
     block-size: 90vh;
-}
-
-@media screen and (max-width: 800px){
-    .page-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas: " b "
-                            " a "
-                            " c ";
-    }
 }
 
 .unit-col, .main-col, .options-col {
@@ -27,17 +17,6 @@
     overflow-y: auto;
 }
 
-.unit-col {
-    grid-area: a;
-}
-
-.main-col {
-    grid-area:b;
-}
-
-.options-col {
-    grid-area: c;
-}
 
 
 .unit-card {
@@ -155,4 +134,62 @@
 .unit__count-selector {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.add-button{
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.dialog {
+    background: white;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.dialog__body {
+    display: grid;
+    align-items: center;
+    gap: .75rem;
+}
+
+.dialog::backdrop {
+    background: white;
+}
+
+@media screen and (max-width: 800px) {
+    .page-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .unit-col *,
+    .unit-col,
+    .options-col,
+    .options-col * {
+        display: none !important;
+    }
+
+    .add-button {
+        --size: 4rem;
+        display: flex;
+        position:absolute;
+        font-size:1.5rem;
+        inline-size:var(--size);
+        aspect-ratio: 1/1;
+        border-radius: 99px;
+        border: none;
+        background-color: var(--color-positive);
+        color: white;
+        z-index: 999;
+        bottom: .75rem;
+        right: calc(50% - (var(--size) / 2));
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
 }
