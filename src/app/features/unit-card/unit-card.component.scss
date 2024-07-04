@@ -1,0 +1,66 @@
+.unit-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--color-border-2);
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    flex-grow:1;
+}
+
+.unit-card__data-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+.unit-card__name {
+    margin: 0;
+    font-size: var(--font-size);
+}
+
+
+.unit-card__traits-list{
+    margin: 0;
+    display: flex;
+    gap: .25rem 1rem;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.unit-card__trait {
+    list-style: none;
+    padding: 0;
+    color: var(--color-text-2);
+    font-size: var(--font-size-sm);
+}
+
+.unit-card__actions{
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.unit-card__wrapper {
+    display: flex;
+    gap: .75rem;
+}
+
+.unit-card__quantity-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.unit-card__quantity-button {
+    border: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

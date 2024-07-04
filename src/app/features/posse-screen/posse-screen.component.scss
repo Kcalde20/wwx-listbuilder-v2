@@ -1,19 +1,9 @@
 .page-grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "a b c" ;
     gap: .75rem;
     padding: .75rem;
     block-size: 90vh;
-}
-
-@media screen and (max-width: 800px){
-    .page-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas: " b "
-                            " a "
-                            " c ";
-    }
 }
 
 .unit-col, .main-col, .options-col {
@@ -27,17 +17,10 @@
     overflow-y: auto;
 }
 
-.unit-col {
-    grid-area: a;
+.options-col details {
+    display: none;
 }
 
-.main-col {
-    grid-area:b;
-}
-
-.options-col {
-    grid-area: c;
-}
 
 
 .unit-card {
@@ -61,8 +44,9 @@
 }
 
 .posse-card-name {
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-weight:bold;
     padding-block-end: 1rem;
     font-size: var(--font-size-sm);
@@ -79,6 +63,7 @@
 .posse-points {
     text-align: end;
     font-weight: normal;
+    margin-block: -.25rem;
 }
 
 .unit__info {
@@ -101,7 +86,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button.--square {
     padding: .25rem;
+    inline-size: 2.5rem;
 }
 
 .composition__ul,
@@ -153,4 +142,98 @@
 .unit__count-selector {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.add-button{
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.dialog {
+    background: white;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.dialog__body {
+    display: grid;
+    align-items: center;
+    gap: .75rem;
+}
+
+.dialog::backdrop {
+    background: white;
+}
+
+@media screen and (max-width: 800px) {
+    .page-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: max-content;
+    }
+
+
+    .unit-col *,
+    .unit-col,
+    .options-col >:not(details) {
+        display: none !important;
+    }
+
+    .add-button {
+        --size: 4rem;
+        display: flex;
+        position:fixed;
+        font-size:1.5rem;
+        inline-size:var(--size);
+        aspect-ratio: 1/1;
+        border-radius: 99px;
+        border: none;
+        background-color: var(--color-positive);
+        color: white;
+        z-index: 999;
+        bottom: .75rem;
+        right: calc(50% - (var(--size) / 2));
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    .options-col {
+        block-size: fit-content;
+        order: -1;
+    }
+
+    .options-col details {
+        display: flex;
+
+        & summary .card-name { 
+            padding: 0;
+            display: flex;
+            gap: .5rem;
+
+            &::before {
+                content:"▼";
+            }
+        }
+    }
+
+    .options-col details[open] summary .card-name {
+        padding-block-end: 1rem;
+        &::before {
+            content:"▶"
+        }
+    }
+
+    .options-col details summary {
+        display: flex;
+    }
+}
+
+.page-grid-modal-open {
+    max-height: 1rem;
+    grid-auto-rows: unset;
 }
