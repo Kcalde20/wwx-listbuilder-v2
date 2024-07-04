@@ -17,6 +17,10 @@
     overflow-y: auto;
 }
 
+.options-col details {
+    display: none;
+}
+
 
 
 .unit-card {
@@ -82,7 +86,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button.--square {
     padding: .25rem;
+    inline-size: 2.5rem;
 }
 
 .composition__ul,
@@ -163,12 +171,12 @@
 @media screen and (max-width: 800px) {
     .page-grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: max-content;
     }
 
     .unit-col *,
     .unit-col,
-    .options-col,
-    .options-col * {
+    .options-col >:not(details) {
         display: none !important;
     }
 
@@ -192,4 +200,39 @@
             opacity: .8;
         }
     }
+
+    .options-col {
+        block-size: fit-content;
+        order: -1;
+    }
+
+    .options-col details {
+        display: flex;
+
+        & summary .card-name { 
+            padding: 0;
+            display: flex;
+            gap: .5rem;
+
+            &::before {
+                content:"▼";
+            }
+        }
+    }
+
+    .options-col details[open] summary .card-name {
+        padding-block-end: 1rem;
+        &::before {
+            content:"▶"
+        }
+    }
+
+    .options-col details summary {
+        display: flex;
+    }
 }
+
+@keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }

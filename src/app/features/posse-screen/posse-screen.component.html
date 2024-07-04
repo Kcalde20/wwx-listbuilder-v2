@@ -123,6 +123,33 @@
             <li class="bonus__li">{{ bonuses }}</li>
             }
         </ul>
+
+        <details>
+            <summary>
+                <div class="card-name">Posse Rules</div>
+            </summary>
+            <p class="posse__description">
+                {{ this.posseIdData()?.description }}
+            </p>
+            <strong class="section__title">COMPOSITION:</strong>
+            <ul class="composition__ul">
+                @for ( compositions of this.posseIdData()?.composition; track $index) {
+                <li class="composition__li">{{ compositions }}</li>
+                }
+            </ul>
+            <strong class="section__title">LIMITATION:</strong>
+            <ul class="limitation__ul">
+                @for ( limitations of this.posseIdData()?.limitation; track $index) {
+                <li class="limitation__li">{{ limitations }}</li>
+                }
+            </ul>
+            <strong class="section__title">BONUS:</strong>
+            <ul class="bonus__ul">
+                @for ( bonuses of this.posseIdData()?.bonus; track $index) {
+                <li class="bonus__li">{{ bonuses }}</li>
+                }
+            </ul>
+        </details>
     </div>
 </div>
 
