@@ -19,7 +19,7 @@
     <div class="main-col">
         <div class="card-name">Selected Posses</div>
         @for (posse of listService.listSignal()[listIndex].posses; track $index) {
-        <div class="unit-card">
+        <div class="unit-card animate--slideInFromTop">
             <div class="unit-card__header">
                 <div class="unit-card__name">
                     <a routerLink="posses/{{ $index }}">{{ posse.displayName }}</a>

@@ -21,21 +21,7 @@
     display: none;
 }
 
-
-
-.unit-card {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid var(--color-border-2);
-    padding: .75rem 1rem;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-
-}
-
-.card-name {
+.section-card__name {
     display: flex;
     justify-content: center;
     font-weight:bold;
@@ -59,6 +45,7 @@
     justify-content: space-between;
 
 }
+
 
 .posse-points {
     text-align: end;
@@ -123,50 +110,12 @@
     color: var(--color-text-2);
 }
 
-
-.empty-image {
-    height: auto;
-    width: 10rem;
-    margin-inline: auto;
-    padding-block-start: 1rem;
-    opacity: .8;
-    
-}
-
-.empty-text {
-    text-align: center;
-    color: var(--color-text-2);
-    font-size: var(--font-size-sm);
-}
-
 .unit__count-selector {
     display: flex;
     flex-wrap: nowrap;
 }
 
-.add-button{
-    gap: .5rem;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
 
-.dialog {
-    background: white;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.dialog__body {
-    display: grid;
-    align-items: center;
-    gap: .75rem;
-}
-
-.dialog::backdrop {
-    background: white;
-}
 
 @media screen and (max-width: 800px) {
     .page-grid {
@@ -179,27 +128,6 @@
     .unit-col,
     .options-col >:not(details) {
         display: none !important;
-    }
-
-    .add-button {
-        --size: 4rem;
-        display: flex;
-        position:fixed;
-        font-size:1.5rem;
-        inline-size:var(--size);
-        aspect-ratio: 1/1;
-        border-radius: 99px;
-        border: none;
-        background-color: var(--color-positive);
-        color: white;
-        z-index: 999;
-        bottom: .75rem;
-        right: calc(50% - (var(--size) / 2));
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
-        &:hover {
-            opacity: .8;
-        }
     }
 
     .options-col {
