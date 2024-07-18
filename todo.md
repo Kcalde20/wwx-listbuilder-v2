@@ -18,4 +18,7 @@
 
 ## Future
 - backend to serve models 
+- export list
+- export list w/ card references
+- darkmode
 

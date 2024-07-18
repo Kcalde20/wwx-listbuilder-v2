@@ -8,6 +8,8 @@
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
     flex-grow:1;
+    animation: slideInFromTop .1s ease-out;
+    background-color: white;
 }
 
 .unit-card__data-block {

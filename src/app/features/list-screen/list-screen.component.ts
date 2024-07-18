@@ -40,6 +40,20 @@ export class ListScreenComponent {
         this.listService.removePosse(posseIndex, listIndex);
     }
 
+    openModal(modalId: string) {
+        const dialog: HTMLDialogElement = document.getElementById(modalId) as HTMLDialogElement;
+        dialog?.showModal();
+        const pageGrid = document.getElementsByClassName('page-grid');
+        pageGrid[0].classList.toggle('page-grid-modal-open');
+    }
+
+    closeModal(modalId: string) {
+        const dialog: HTMLDialogElement = document.getElementById(modalId) as HTMLDialogElement;
+        dialog?.close();
+        const pageGrid = document.getElementsByClassName('page-grid');
+        pageGrid[0].classList.toggle('page-grid-modal-open');
+    }
+
     ngOnInit() {
         this.listIndex = this.listService.currentListIndex();
         this.listName.set(this.listService.listSignal()[this.listIndex].name);
